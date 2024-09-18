@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://w31u3wrcv7c1"]
+
+[ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
+[ext_resource type="Texture2D" uid="uid://mjgwl68d7m05" path="res://Assets/sprites/tilesets/grass.png" id="1_nniuf"]
+
+[node name="World" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(-4, -4.5)
+scale = Vector2(11.5, 7.3125)
+texture = ExtResource("1_nniuf")
+
+[node name="Player" parent="." instance=ExtResource("1_2l0yv")]
