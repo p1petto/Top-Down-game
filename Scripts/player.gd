@@ -3,8 +3,20 @@ extends CharacterBody2D
 class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $Sprite2D
+#@onready var health_system: HealthSystem = $health_system
+@onready var combat_system: CombatSystem = $CombatSystem
+
 
 const SPEED = 5000.0
+
+@export var health = 100
+
+func _ready() -> void:
+	#health_system.init(health)
+	#health_system.died.connect(on_player_dead)
+	#health_system.damage_taken.connect(on_damage_taken)
+	#on_screen_ui.init_health_bar(health)
+	pass
 
 func _physics_process(delta: float) -> void:
 	
