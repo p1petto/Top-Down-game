@@ -417,7 +417,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pugn2"]
-size = Vector2(15, 20)
+size = Vector2(15, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5jw2"]
 radius = 9.0
@@ -429,13 +429,12 @@ health = null
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"attack_horizontal"
+animation = &"idle_down"
 autoplay = "idle_down"
-frame = 1
 script = ExtResource("3_hf18r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 8)
+position = Vector2(0.5, 14.5)
 shape = SubResource("RectangleShape2D_pugn2")
 
 [node name="Area2D" type="Area2D" parent="."]
