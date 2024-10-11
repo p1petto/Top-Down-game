@@ -4,6 +4,7 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $Sprite2D
 @onready var combat_system: CombatSystem = $CombatSystem
+@onready var health_system: HealthSystem = $HealthSystem
 
 
 const SPEED = 5000.0
@@ -11,8 +12,8 @@ const SPEED = 5000.0
 @export var health = 100
 
 func _ready() -> void:
-
-	pass
+	health_system.init(health)
+	health_system.died.connect(on_player_dead)
 
 func _physics_process(delta: float) -> void:
 	
@@ -33,3 +34,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play_idle_animation()
 
 	move_and_slide()
+	
+func on_player_dead():
+	set_physics_process(false)
+	combat_system.set_process_input(false)
+	animated_sprite_2d.play("died")
+	

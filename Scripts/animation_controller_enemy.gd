@@ -16,8 +16,14 @@ func play_movement_animation(direction: Vector2):
 		
 	last_direction = direction
 	
-	if direction.x > 0 and absf(direction.x) > absf(direction.y) or direction.x < 0 and absf(direction.x) > absf(direction.y):
+	if direction.x > 0 and absf(direction.x) > absf(direction.y):
 		play("walk_horizontal")
+		$"../Sprite2D".flip_h = false
+		return
+	elif direction.x < 0 and absf(direction.x) > absf(direction.y):	
+		
+		play("walk_horizontal")
+		$"../Sprite2D".flip_h = true
 		return
 	
 	if direction.y > 0 and absf(direction.y) > absf(direction.x):

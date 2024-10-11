@@ -29,3 +29,4 @@ func _input(event):
 func on_attack_animation_finished():
 	can_attack = true
 	attak_collision.disabled = true
+	

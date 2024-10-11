@@ -423,6 +423,8 @@ size = Vector2(15, 7)
 radius = 9.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_urfjx")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -438,6 +440,8 @@ shape = SubResource("RectangleShape2D_pugn2")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0.16, 17.48)
+collision_layer = 4
+collision_mask = 2
 
 [node name="AttakCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(7.84, -4.48)

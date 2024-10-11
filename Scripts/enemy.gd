@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Enemy
 
 @export var patrol_path: Array[Marker2D] = []
 @export var speed: float = 100

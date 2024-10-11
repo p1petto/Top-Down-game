@@ -99,22 +99,6 @@ tracks/0/keys = {
 "values": [84, 85, 85, 86, 87, 88, 89]
 }
 
-[sub_resource type="Animation" id="Animation_d7xqy"]
-resource_name = "idle_horisontal"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10]
-}
-
 [sub_resource type="Animation" id="Animation_1t6d1"]
 resource_name = "idle_top"
 length = 0.4
@@ -218,6 +202,23 @@ tracks/1/keys = {
 "values": [Vector2(0, 5.225), Vector2(0, 1.345), Vector2(0, -2.075), Vector2(0, 0.885), Vector2(0, 5.995), Vector2(0, 7.035)]
 }
 
+[sub_resource type="Animation" id="Animation_d7xqy"]
+resource_name = "idle_horisontal"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7ugs"]
 _data = {
 "RESET": SubResource("Animation_uyt6u"),
@@ -226,7 +227,7 @@ _data = {
 "damaged_top": SubResource("Animation_w15qx"),
 "died": SubResource("Animation_doxb5"),
 "idle_down": ExtResource("3_caghy"),
-"idle_horisontal": SubResource("Animation_d7xqy"),
+"idle_horizontal": SubResource("Animation_d7xqy"),
 "idle_top": SubResource("Animation_1t6d1"),
 "walk_down": SubResource("Animation_i8ou0"),
 "walk_horizontal": SubResource("Animation_23fs5"),
@@ -234,6 +235,8 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_y4g5m")
 speed = 50.0
 
