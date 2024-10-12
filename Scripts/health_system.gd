@@ -14,6 +14,6 @@ func init(health: int):
 	
 func apply_damage(damage: int):
 	current_health = current_health - damage
-	damage_taken.emit(damage)
+	damage_taken.emit()
 	if current_health <= 0:
 		died.emit()

@@ -18,6 +18,14 @@ const DIRECTION_TO_ATTACK_ANIMATION = {
 	"horizontal": "attack_horizontal"
 }
 
+const TO_DAMAGE = {
+	"walk_top": "damaged_top",
+	"walk_down": "damaged_down",
+	"walk_horizontal": "damaged_horizontal",
+	"idle_horizontal": "damaged_horizontal",
+	"idle_top": "damaged_top",
+	"idle_down": "damaged_down"
+}
 
 const COLLISION_ATTAK_POSITION = {
 	"top": Vector2(0, -12),
@@ -59,7 +67,9 @@ func play_attack_animation():
 	else:	
 		attak_collision.position = COLLISION_ATTAK_POSITION[direction]
 	
-	
+func play_damaged_animation():
+	if TO_DAMAGE.keys().has(animation):
+		play(TO_DAMAGE[animation])
 	
 func _on_animation_finished() -> void:
 	

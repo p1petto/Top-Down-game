@@ -8,6 +8,8 @@ const MOVEMENT_TO_IDLE = {
 	"walk_horizontal": "idle_horizontal"
 }
 
+
+
 var last_direction: Vector2 = Vector2.ZERO
 
 func play_movement_animation(direction: Vector2):
@@ -38,3 +40,4 @@ func play_idle_animation():
 	var animation = current_animation
 	if MOVEMENT_TO_IDLE.keys().has(animation):
 		play(MOVEMENT_TO_IDLE[animation])
+		

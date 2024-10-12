@@ -13,7 +13,7 @@ func _ready() -> void:
 	animated_sprite_2d.attack_animation_finished.connect(on_attack_animation_finished)
 
 
-func _input(event):
+func _input(_event):
 	
 	if Input.is_action_just_pressed("left_hand_attack"):
 		

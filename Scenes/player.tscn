@@ -273,7 +273,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f116r")
 }],
-"loop": true,
+"loop": false,
 "name": &"died",
 "speed": 7.0
 }, {
@@ -423,14 +423,14 @@ size = Vector2(15, 7)
 radius = 9.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_urfjx")
+health = 5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"idle_down"
+animation = &"died"
 autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 
@@ -459,3 +459,4 @@ script = ExtResource("4_qk3vs")
 script = ExtResource("5_8jv4t")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

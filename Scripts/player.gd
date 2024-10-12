@@ -14,6 +14,7 @@ const SPEED = 5000.0
 func _ready() -> void:
 	health_system.init(health)
 	health_system.died.connect(on_player_dead)
+	#health_system.damage_taken.connect(on_player_damage)
 
 func _physics_process(delta: float) -> void:
 	
@@ -40,3 +41,14 @@ func on_player_dead():
 	combat_system.set_process_input(false)
 	animated_sprite_2d.play("died")
 	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == 'Enemy':
+		$"../Enemy/HealthSystem".apply_damage(3)
+		print("Enemy health: ", $"../Enemy/HealthSystem".current_health)
+		
+		
+		
+#func on_player_damage():
+	#animated_sprite_2d.play_damaged_animation()
