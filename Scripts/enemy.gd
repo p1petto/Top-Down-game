@@ -46,9 +46,8 @@ func move_along_path(delta: float):
 
 func on_dead():
 	set_physics_process(false)
-	$"Area2D/CollisionShape2D".disabled = true
 	animated_sprite_2d.play("died")
-	
+	queue_free()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -18,6 +18,7 @@ patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrol
 
 [node name="Player" parent="." instance=ExtResource("1_2l0yv")]
 position = Vector2(41, 3)
+health = 10
 
 [node name="EnemyPatrolPath" type="Node2D" parent="."]
 
