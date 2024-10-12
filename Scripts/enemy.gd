@@ -47,10 +47,15 @@ func move_along_path(delta: float):
 func on_dead():
 	set_physics_process(false)
 	animated_sprite_2d.play("died")
-	queue_free()
+	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		$"../Player/HealthSystem".apply_damage(3)
 		print("Player health: ", $"../Player/HealthSystem".current_health)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "died":
+		queue_free()

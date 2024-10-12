@@ -10,6 +10,7 @@ class_name Player
 const SPEED = 5000.0
 
 @export var health = 100
+var died = false
 
 func _ready() -> void:
 	health_system.init(health)
@@ -39,7 +40,9 @@ func _physics_process(delta: float) -> void:
 func on_player_dead():
 	set_physics_process(false)
 	combat_system.set_process_input(false)
-	animated_sprite_2d.play("died")
+	if !died:
+		animated_sprite_2d.play("died")
+		died = true
 	
 
 
