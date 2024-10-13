@@ -5,6 +5,7 @@ class_name AnimationController
 @onready var attak_collision: CollisionShape2D = $"../Area2D/AttakCollision"
 
 signal attack_animation_finished
+signal damage_animation_finished
 
 const MOVEMENT_TO_IDLE = {
 	"walk_top": "idle_top",
@@ -24,7 +25,10 @@ const TO_DAMAGE = {
 	"walk_horizontal": "damaged_horizontal",
 	"idle_horizontal": "damaged_horizontal",
 	"idle_top": "damaged_top",
-	"idle_down": "damaged_down"
+	"idle_down": "damaged_down",
+	"attack_horizontal": "damaged_horizontal",
+	"attack_top": "damaged_top",
+	"attack_down": "damaged_down",
 }
 
 const COLLISION_ATTAK_POSITION = {
@@ -80,3 +84,7 @@ func _on_animation_finished() -> void:
 		play("idle_" + direction)
 		attack_direction = null
 		attack_animation_finished.emit()
+	if TO_DAMAGE.values().has(animation):
+		var direction = animation.split("_")[1]
+		play("idle_" + direction)
+		damage_animation_finished.emit()

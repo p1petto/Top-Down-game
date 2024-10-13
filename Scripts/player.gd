@@ -10,7 +10,6 @@ class_name Player
 const SPEED = 5000.0
 
 @export var health = 100
-var died = false
 var enemies_group = null
 var knockback_direction = null
 var knockback_power = 100
@@ -19,7 +18,7 @@ enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE }
 var current_state : State = State.IDLE : set = set_state
 
 func set_state(new_state: int) -> void:
-	var previous_state := current_state
+	#var previous_state := current_state
 	current_state = new_state
 	if current_state == State.ATTACK:
 		animated_sprite_2d.play_attack_animation()
@@ -27,26 +26,28 @@ func set_state(new_state: int) -> void:
 func _ready() -> void:
 	health_system.init(health)
 	health_system.died.connect(on_player_dead)
-	#health_system.damage_taken.connect(on_player_damage)
+	health_system.damage_taken.connect(on_player_damage)
+	animated_sprite_2d.damage_animation_finished.connect(on_damage_animation_finished)
 	animated_sprite_2d.attack_animation_finished.connect(on_attack_animation_finished)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if direction:
-		current_state = State.WALKING
+	
 
 	match current_state:
 		State.IDLE:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 			animated_sprite_2d.play_idle_animation()
-			
+			if direction:
+				current_state = State.WALKING
+		
 		State.WALKING:
 			velocity = direction * SPEED * delta
 			if !direction:
 				current_state = State.IDLE
 			animated_sprite_2d.play_movement_animation(velocity)
-	
+
 		State.ATTACK:
 			if !can_attack:
 				return
@@ -54,16 +55,23 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play_attack_animation()
 			attak_collision.disabled = false
 			
+		State.DIED:
+			set_physics_process(false)
+			set_process_input(false)
+			animated_sprite_2d.play("died")	
 			
-	print(current_state)
+		State.DAMAGED:
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
+			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
+			animated_sprite_2d.play_damaged_animation()
+			
+			
 	move_and_slide()
 	
 func on_player_dead():
-	set_physics_process(false)
-	set_process_input(false)
-	if !died:
-		animated_sprite_2d.play("died")
-		died = true
+	current_state = State.DIED
+	
+	
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
@@ -77,13 +85,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 func _input(_event):
 	if Input.is_action_just_pressed("left_hand_attack"):
-		current_state = State.ATTACK
+		if current_state != State.DAMAGED:
+			current_state = State.ATTACK
 		
 		
-#func on_player_damage():
-	#animated_sprite_2d.play_damaged_animation()
+func on_player_damage():
+	current_state = State.DAMAGED
+	
 
 func on_attack_animation_finished():
-	can_attack = true
 	attak_collision.disabled = true
+	current_state = State.IDLE
+
+func on_damage_animation_finished():
 	current_state = State.IDLE

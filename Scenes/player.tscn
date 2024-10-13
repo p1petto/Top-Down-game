@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=66 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Texture2D" uid="uid://dhqecnusgi4ul" path="res://Assets/sprites/characters/player.png" id="1_vfj18"]
@@ -53,6 +53,30 @@ region = Rect2(96, 384, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_663y6"]
 atlas = ExtResource("1_vfj18")
 region = Rect2(144, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6o7"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(0, 480, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t11ec"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(48, 480, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbex6"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(0, 528, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdjfv"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(48, 528, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r8hg"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(0, 576, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw6p7"]
+atlas = ExtResource("1_vfj18")
+region = Rect2(48, 576, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xx81b"]
 atlas = ExtResource("1_vfj18")
@@ -265,6 +289,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t11ec")
+}],
+"loop": false,
+"name": &"damaged_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbex6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdjfv")
+}],
+"loop": false,
+"name": &"damaged_horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r8hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw6p7")
+}],
+"loop": false,
+"name": &"damaged_top",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xx81b")
 }, {
 "duration": 1.0,
@@ -425,12 +482,12 @@ radius = 9.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_urfjx")
-health = 275
+health = 120
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"attack_horizontal"
+animation = &"damaged_top"
 autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 

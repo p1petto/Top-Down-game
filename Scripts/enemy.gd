@@ -83,7 +83,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				return
 		if current_state == State.DAMAGED:
 			return
-		$"../Player/HealthSystem".apply_damage(3)
+		body.health_system.apply_damage(3)
 		print("Player health: ", $"../Player/HealthSystem".current_health)
 
 
