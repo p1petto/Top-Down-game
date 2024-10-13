@@ -425,12 +425,12 @@ radius = 9.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_urfjx")
-health = 5
+health = 275
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"died"
+animation = &"attack_horizontal"
 autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 

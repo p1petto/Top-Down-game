@@ -9,7 +9,9 @@ class_name Enemy
 
 @onready var animated_sprite_2d: AnimationControllerEnemy = $AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
-	
+@onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
+@onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+
 var current_patrol_target = 0
 var wait_timer = 0.0
 var last_animation = null
@@ -46,12 +48,17 @@ func move_along_path(delta: float):
 
 func on_dead():
 	set_physics_process(false)
+	collision_shape_2d.set_deferred("disabled", true) 
+	area_collision_shape_2d.set_deferred("disabled", true) 
 	animated_sprite_2d.play("died")
-	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
+		var animation = $"../Player/Sprite2D".animation
+		if str(animation).contains("attack"):
+			if $"../Player/Sprite2D".frame <= 1:
+				return
 		$"../Player/HealthSystem".apply_damage(3)
 		print("Player health: ", $"../Player/HealthSystem".current_health)
 
@@ -59,3 +66,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "died":
 		queue_free()
+		pass

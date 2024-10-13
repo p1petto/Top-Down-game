@@ -11,11 +11,13 @@ const SPEED = 5000.0
 
 @export var health = 100
 var died = false
+var enemies_group = null
 
 func _ready() -> void:
 	health_system.init(health)
 	health_system.died.connect(on_player_dead)
 	#health_system.damage_taken.connect(on_player_damage)
+	enemies_group = get_tree().get_nodes_in_group("Enemies")
 
 func _physics_process(delta: float) -> void:
 	
@@ -47,11 +49,9 @@ func on_player_dead():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == 'Enemy':
-		$"../Enemy/HealthSystem".apply_damage(3)
-		print("Enemy health: ", $"../Enemy/HealthSystem".current_health)
-		
-		
+	if body.is_in_group("Enemies"):
+		body.health_system.apply_damage(3)
+		print("Enemy health: ", body.health_system.current_health)
 		
 #func on_player_damage():
 	#animated_sprite_2d.play_damaged_animation()
