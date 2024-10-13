@@ -16,8 +16,13 @@ var knockback_direction = null
 var knockback_power = 100
 var can_attack = true
 enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE }
-var current_state = State.IDLE
+var current_state : State = State.IDLE : set = set_state
 
+func set_state(new_state: int) -> void:
+	var previous_state := current_state
+	current_state = new_state
+	if current_state == State.ATTACK:
+		animated_sprite_2d.play_attack_animation()
 
 func _ready() -> void:
 	health_system.init(health)
@@ -48,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			can_attack = false
 			animated_sprite_2d.play_attack_animation()
 			attak_collision.disabled = false
-			current_state = State.IDLE
+			
 			
 	print(current_state)
 	move_and_slide()
@@ -81,4 +86,4 @@ func _input(_event):
 func on_attack_animation_finished():
 	can_attack = true
 	attak_collision.disabled = true
-	#current_state = State.IDLE
+	current_state = State.IDLE
