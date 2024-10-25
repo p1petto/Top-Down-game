@@ -336,8 +336,8 @@ _data = {
 radius = 3.0
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_y4g5m")
 speed = 50.0
 
@@ -365,6 +365,8 @@ script = ExtResource("4_8xsf3")
 script = ExtResource("5_fmyxb")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 2)

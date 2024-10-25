@@ -480,7 +480,7 @@ size = Vector2(15, 7)
 radius = 9.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_urfjx")
 health = 120
 
@@ -492,13 +492,15 @@ autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
 position = Vector2(0.5, 14.5)
 shape = SubResource("RectangleShape2D_pugn2")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0.16, 17.48)
-collision_layer = 4
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="AttakCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(7.84, -4.48)
