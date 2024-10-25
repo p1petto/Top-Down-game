@@ -7,6 +7,7 @@ class_name Player
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var attak_collision: CollisionShape2D = $"Area2D/AttakCollision"
 
+
 const SPEED = 5000.0
 
 @export var health = 100

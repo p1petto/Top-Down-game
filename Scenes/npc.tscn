@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctim4bqy7ji0n"]
+
+[ext_resource type="Texture2D" uid="uid://cm8kfuv72gi0k" path="res://Assets/sprites/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="1_ex5vt"]
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_n65hq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0bla"]
+radius = 12.0
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fv0m"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n86bv"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51tf"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcwqy"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwadx"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44vk4"]
+atlas = ExtResource("1_ex5vt")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r87u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fv0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n86bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcwqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwadx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44vk4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_n65hq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_f0bla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7r87u")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.956449
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_f0bla")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

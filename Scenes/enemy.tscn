@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y4g5m"]
 [ext_resource type="Texture2D" uid="uid://mt8q8d6pa3m3" path="res://Assets/sprites/characters/slime.png" id="2_jfwv5"]
-[ext_resource type="Animation" uid="uid://dku8g0suqi05q" path="res://Animations/Enemies/Slime/idle_down.res" id="3_caghy"]
 [ext_resource type="Script" path="res://Scripts/animation_controller_enemy.gd" id="4_8xsf3"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="5_fmyxb"]
 
@@ -122,6 +121,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [84, 85, 85, 86, 87, 88, 89]
+}
+
+[sub_resource type="Animation" id="Animation_cgfbj"]
+resource_name = "idle_down"
+length = 0.6
+loop_mode = 1
+step = 0.0168
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Enemy/Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.483333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_d7xqy"]
@@ -324,7 +341,7 @@ _data = {
 "damaged_horizontal": SubResource("Animation_0fc8t"),
 "damaged_top": SubResource("Animation_w15qx"),
 "died": SubResource("Animation_doxb5"),
-"idle_down": ExtResource("3_caghy"),
+"idle_down": SubResource("Animation_cgfbj"),
 "idle_horizontal": SubResource("Animation_d7xqy"),
 "idle_top": SubResource("Animation_1t6d1"),
 "walk_down": SubResource("Animation_i8ou0"),
