@@ -4,7 +4,7 @@ extends ProgressBar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.health_system.health_changed.connect(update)
-	max_value = player.max_health
+	value = player.max_health
 	update()
 
 func update():
