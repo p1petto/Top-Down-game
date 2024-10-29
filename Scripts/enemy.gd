@@ -5,7 +5,7 @@ class_name Enemy
 @export var patrol_path: Array[Marker2D] = []
 @export var speed: float = 100
 @export var patrol_wait_time = 1.0
-@export var health = 10
+@export var max_health = 10
 
 @onready var animated_sprite_2d: AnimationControllerEnemy = $AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
@@ -22,7 +22,7 @@ var acc = null
 
 	
 func _ready() -> void:
-	health_system.init(health)
+	health_system.init(max_health)
 	health_system.died.connect(on_dead)
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position

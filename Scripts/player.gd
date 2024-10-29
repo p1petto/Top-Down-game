@@ -10,7 +10,7 @@ class_name Player
 
 const SPEED = 5000.0
 
-@export var health = 100
+@export var max_health: int
 var enemies_group = null
 var knockback_direction = null
 var knockback_power = 100
@@ -25,7 +25,7 @@ func set_state(new_state: int) -> void:
 		animated_sprite_2d.play_attack_animation()
 
 func _ready() -> void:
-	health_system.init(health)
+	health_system.init(max_health)
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_player_damage)
 	animated_sprite_2d.damage_animation_finished.connect(on_damage_animation_finished)
