@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cylrcecuqtrja"]
+
+[ext_resource type="Script" path="res://Scripts/UI/inventory_slot.gd" id="1_w45dq"]
+[ext_resource type="Texture2D" uid="uid://cfrqpqjlgsg6y" path="res://Assets/sprites/UI/FacesetBox.png" id="2_050qd"]
+
+[node name="InventorySlot" type="VBoxContainer"]
+script = ExtResource("1_w45dq")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_050qd")
+
+[node name="MenuButton" type="MenuButton" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drop"
+item_count = 1
+popup/item_0/text = "Equip"
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MenuButton/CenterContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="OnClickButton" type="Button" parent="NinePatchRect"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="StacksLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.983
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_left = -53.0
+offset_top = -25.98
+offset_right = -8.0
+offset_bottom = -2.98
+text = "1"
+horizontal_alignment = 2
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 2

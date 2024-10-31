@@ -4,7 +4,7 @@ class_name InventoryItem
 
 var stacks = 1
 
-@export_enum("Craft", "Potions", "NotEquipable") 
+@export_enum("Craft", "Weapon", "NotEquipable") 
 var slot_type: String = "NotEquipable"
 
 @export var ground_collision_shape: CapsuleShape2D

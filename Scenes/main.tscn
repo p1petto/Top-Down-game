@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/dialogue.tscn" id="7_it7lj"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
-[ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory.tscn" id="10_dro7y"]
+[ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
 [ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/gold_coin.tres" id="12_xevbu"]
 
