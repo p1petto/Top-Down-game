@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
 [ext_resource type="Texture2D" uid="uid://1jcjiwddsl6t" path="res://Assets/sprites/tilesets/fences.png" id="2_20l8x"]
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="2_l0fdp"]
-[ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/UI/healthbarUnder.png" id="7_0jqog"]
+[ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/sprites/UI/healthbarUnder.png" id="7_0jqog"]
 [ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="7_5ihua"]
 [ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/dialogue.tscn" id="7_it7lj"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
-[ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/UI/healthbarProgress.png" id="8_t66xt"]
+[ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://dwvjqh76purxr" path="res://Scenes/pickup_item.tscn" id="10_p0a0i"]
 

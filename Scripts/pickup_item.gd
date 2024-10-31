@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var sprite = $Sprite2D
+@onready var inventory = $"../UI/Inventory/ItemList"
 
 #enum Pickups { FOOD, CRAFT }
 #
@@ -9,7 +10,7 @@ extends Area2D
 @export var item_name: String
 
 func _ready() -> void:
-	var texture_path = "res://Assets/objects/" + item_name + ".png"  
+	var texture_path = "res://Assets/sprites/objects/" + item_name + ".png"  
 	var texture = load(texture_path) as Texture2D  
 
 	if texture:
@@ -25,4 +26,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.name == 'Player':
+		pass

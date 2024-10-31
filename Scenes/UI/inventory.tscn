@@ -7,3 +7,6 @@ offset_left = 19.0
 offset_top = 38.0
 offset_right = 127.0
 offset_bottom = 603.0
+item_count = 2
+item_0/text = "Объект"
+item_1/text = "Объект"

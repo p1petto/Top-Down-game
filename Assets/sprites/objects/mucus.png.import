@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpgve2lagmcp"
-path="res://.godot/imported/healthbarUnder.png-421fcc510dbe6327a0182323372b99a6.ctex"
+uid="uid://c54n7yqcb0r33"
+path="res://.godot/imported/mucus.png-5e7d43e909221a007f2d44660774d923.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/healthbarUnder.png"
-dest_files=["res://.godot/imported/healthbarUnder.png-421fcc510dbe6327a0182323372b99a6.ctex"]
+source_file="res://Assets/sprites/objects/mucus.png"
+dest_files=["res://.godot/imported/mucus.png-5e7d43e909221a007f2d44660774d923.ctex"]
 
 [params]
 
