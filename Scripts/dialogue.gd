@@ -2,8 +2,6 @@ extends CanvasLayer
 
 class_name Dialogue_system
 
-
-
 var dialogue = []
 var cur_dialogue_id = -1
 var d_active = false

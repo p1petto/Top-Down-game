@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cylrcecuqtrja"]
+
+[node name="Inventory" type="CanvasLayer"]
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 19.0
+offset_top = 38.0
+offset_right = 127.0
+offset_bottom = 603.0

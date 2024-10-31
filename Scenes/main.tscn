@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=17 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="2_l0fdp"]
 [ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/UI/healthbarUnder.png" id="7_0jqog"]
 [ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="7_5ihua"]
-[ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/UI/dialogue.tscn" id="7_it7lj"]
+[ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/dialogue.tscn" id="7_it7lj"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/UI/healthbarProgress.png" id="8_t66xt"]
+[ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory.tscn" id="10_dro7y"]
+[ext_resource type="PackedScene" uid="uid://dwvjqh76purxr" path="res://Scenes/pickup_item.tscn" id="10_p0a0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vei56"]
 texture = ExtResource("1_m8xdr")
@@ -134,6 +136,7 @@ y_sort_enabled = true
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
+position = Vector2(1, 0)
 tile_set = SubResource("TileSet_t203y")
 format = 2
 layer_0/name = "collision"
@@ -171,11 +174,11 @@ position = Vector2(-6, 29)
 [node name="NPC" parent="TileMap" instance=ExtResource("7_oa6l2")]
 position = Vector2(-144, -56)
 
-[node name="Dialogue" parent="." instance=ExtResource("7_it7lj")]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Dialogue" parent="UI" instance=ExtResource("7_it7lj")]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
 texture_filter = 1
 offset_left = 904.0
 offset_top = 10.0
@@ -185,3 +188,9 @@ theme_override_styles/background = SubResource("StyleBoxTexture_2m8df")
 theme_override_styles/fill = SubResource("StyleBoxTexture_7b2ng")
 value = 50.0
 script = ExtResource("7_5ihua")
+
+[node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
+
+[node name="PickupItem" parent="." instance=ExtResource("10_p0a0i")]
+position = Vector2(113, -28)
+item_name = "mucus"
