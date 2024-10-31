@@ -36,9 +36,11 @@ func _physics_process(delta: float) -> void:
 	
 
 	match current_state:
+		
 		State.IDLE:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
+			attak_collision.disabled = true
 			animated_sprite_2d.play_idle_animation()
 			if direction:
 				current_state = State.WALKING
@@ -48,6 +50,7 @@ func _physics_process(delta: float) -> void:
 			if !direction:
 				current_state = State.IDLE
 			animated_sprite_2d.play_movement_animation(velocity)
+			
 
 		State.ATTACK:
 			if !can_attack:
@@ -55,13 +58,17 @@ func _physics_process(delta: float) -> void:
 			can_attack = false
 			animated_sprite_2d.play_attack_animation()
 			attak_collision.disabled = false
+
 			
 		State.DIED:
 			set_physics_process(false)
 			set_process_input(false)
 			animated_sprite_2d.play("died")	
+		
 			
 		State.DAMAGED:
+			can_attack = false
+			attak_collision.disabled = true
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 			animated_sprite_2d.play_damaged_animation()
@@ -86,7 +93,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 func _input(_event):
 	if Input.is_action_just_pressed("left_hand_attack"):
-		if current_state != State.DAMAGED:
+		if current_state != State.DAMAGED and current_state != State.DIED:
 			current_state = State.ATTACK
 		
 		
@@ -100,3 +107,9 @@ func on_attack_animation_finished():
 
 func on_damage_animation_finished():
 	current_state = State.IDLE
+
+
+
+func _on_area_pick_up_area_entered(area: Area2D) -> void:
+	if area is PickUpItem:
+		area.queue_free()

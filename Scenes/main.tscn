@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=18 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory.tscn" id="10_dro7y"]
-[ext_resource type="PackedScene" uid="uid://dwvjqh76purxr" path="res://Scenes/pickup_item.tscn" id="10_p0a0i"]
+[ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
+[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/gold_coin.tres" id="12_xevbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vei56"]
 texture = ExtResource("1_m8xdr")
@@ -192,5 +193,5 @@ script = ExtResource("7_5ihua")
 [node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
 
 [node name="PickupItem" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(113, -28)
-item_name = "mucus"
+position = Vector2(116, -21)
+inventory_item = ExtResource("12_xevbu")
