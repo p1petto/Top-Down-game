@@ -486,6 +486,7 @@ max_health = 50
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-2, -11)
 sprite_frames = SubResource("SpriteFrames_buo1l")
 animation = &"damaged_top"
 autoplay = "idle_down"
@@ -494,11 +495,11 @@ script = ExtResource("3_hf18r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(0.5, 14.5)
+position = Vector2(-1.5, 3.5)
 shape = SubResource("RectangleShape2D_pugn2")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0.16, 17.48)
+position = Vector2(-1.84, 6.48)
 collision_layer = 0
 collision_mask = 4
 
@@ -509,12 +510,14 @@ disabled = true
 debug_color = Color(0.984314, 0.0823529, 0.235294, 0.611765)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, -11)
 zoom = Vector2(3, 3)
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("4_qk3vs")
 
 [node name="CombatSystem" type="Node2D" parent="."]
+position = Vector2(-2, -11)
 script = ExtResource("5_8jv4t")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]

@@ -16,7 +16,7 @@ var current_patrol_target: int = 0
 var wait_timer := 0.0
 var last_animation = null
 
-enum State { PATROL, DAMAGED }
+enum State { PATROL, DAMAGED, IDLE }
 var current_state = State.PATROL
 var acc = null
 
@@ -44,7 +44,9 @@ func _physics_process(delta: float) -> void:
 			if abs(velocity - Vector2(0, 0)) <= Vector2(0.3, 0.3):
 				current_state = State.PATROL
 				#print (velocity)
-		
+				
+		State.IDLE:
+			animated_sprite_2d.play_idle_animation()
 
 
 func move_along_path(delta: float):
