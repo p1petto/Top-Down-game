@@ -195,3 +195,14 @@ script = ExtResource("7_5ihua")
 [node name="PickupItem" parent="." instance=ExtResource("10_p0a0i")]
 position = Vector2(116, -21)
 inventory_item = ExtResource("12_xevbu")
+stacks = 88
+
+[node name="PickupItem2" parent="." instance=ExtResource("10_p0a0i")]
+position = Vector2(75, -29)
+inventory_item = ExtResource("12_xevbu")
+stacks = 20
+
+[node name="PickupItem3" parent="." instance=ExtResource("10_p0a0i")]
+position = Vector2(115, 5)
+inventory_item = ExtResource("12_xevbu")
+stacks = 53

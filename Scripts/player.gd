@@ -6,7 +6,7 @@ class_name Player
 #@onready var combat_system: CombatSystem = $CombatSystem
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var attak_collision: CollisionShape2D = $"Area2D/AttakCollision"
-
+@onready var inventory: Inventory = $Inventory
 
 const SPEED = 5000.0
 
@@ -112,4 +112,5 @@ func on_damage_animation_finished():
 
 func _on_area_pick_up_area_entered(area: Area2D) -> void:
 	if area is PickUpItem:
+		inventory.add_item(area.inventory_item, area.stacks)
 		area.queue_free()
