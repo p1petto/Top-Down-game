@@ -160,7 +160,7 @@ position = Vector2(-79, 30)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D")]
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_2l0yv")]
-position = Vector2(-16, -8)
+position = Vector2(-195, -34)
 
 [node name="EnemyPatrolPath" type="Node2D" parent="TileMap"]
 
@@ -200,7 +200,7 @@ inventory_item = ExtResource("12_xevbu")
 stacks = 88
 
 [node name="PickupItem2" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(75, -29)
+position = Vector2(-90, -74)
 inventory_item = ExtResource("13_p3nja")
 
 [node name="PickupItem3" parent="." instance=ExtResource("10_p0a0i")]

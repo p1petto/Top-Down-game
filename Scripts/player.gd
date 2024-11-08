@@ -14,15 +14,15 @@ const SPEED = 5000.0
 var enemies_group = null
 var knockback_direction = null
 var knockback_power = 100
-var can_attack = true
+#var can_attack = false
 enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE }
 var current_state : State = State.IDLE : set = set_state
 
 func set_state(new_state: int) -> void:
 	#var previous_state := current_state
 	current_state = new_state
-	if current_state == State.ATTACK:
-		animated_sprite_2d.play_attack_animation()
+	#if current_state == State.ATTACK:
+		#animated_sprite_2d.play_attack_animation()
 
 func _ready() -> void:
 	health_system.init(max_health)
@@ -32,9 +32,9 @@ func _ready() -> void:
 	animated_sprite_2d.attack_animation_finished.connect(on_attack_animation_finished)
 
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
-
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	print(current_state)
 	match current_state:
 		
 		State.IDLE:
@@ -42,9 +42,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 			attak_collision.disabled = true
 			animated_sprite_2d.play_idle_animation()
-			if direction:
-				current_state = State.WALKING
-		
+			
 		State.WALKING:
 			velocity = direction * SPEED * delta
 			if !direction:
@@ -53,11 +51,15 @@ func _physics_process(delta: float) -> void:
 			
 
 		State.ATTACK:
-			if !can_attack:
-				return
-			can_attack = false
+			#if !can_attack:
+				#return
+			#can_attack = false
+			set_physics_process(false)
+			set_process_input(false)
 			animated_sprite_2d.play_attack_animation()
 			attak_collision.disabled = false
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
+			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 
 			
 		State.DIED:
@@ -67,13 +69,19 @@ func _physics_process(delta: float) -> void:
 		
 			
 		State.DAMAGED:
-			can_attack = false
+			#can_attack = false
+			set_physics_process(false)
+			set_process_input(false)
 			attak_collision.disabled = true
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 			velocity.y = move_toward(velocity.y, 0, SPEED * delta)
 			animated_sprite_2d.play_damaged_animation()
 			
 			
+	
+	if direction:
+		if current_state != State.DAMAGED :
+			current_state = State.WALKING		
 	move_and_slide()
 	
 func on_player_dead():
@@ -104,9 +112,13 @@ func on_player_damage():
 func on_attack_animation_finished():
 	attak_collision.disabled = true
 	current_state = State.IDLE
+	set_physics_process(true)
+	set_process_input(true)
 
 func on_damage_animation_finished():
 	current_state = State.IDLE
+	set_physics_process(true)
+	set_process_input(true)
 
 
 

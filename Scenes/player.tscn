@@ -297,6 +297,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t11ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t11ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6o7")
 }],
 "loop": false,
 "name": &"damaged_down",
@@ -308,6 +314,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sdjfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdjfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbex6")
 }],
 "loop": false,
 "name": &"damaged_horizontal",
@@ -319,6 +331,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw6p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw6p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r8hg")
 }],
 "loop": false,
 "name": &"damaged_top",
@@ -491,7 +509,7 @@ max_health = 50
 texture_filter = 1
 position = Vector2(-2, -11)
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"damaged_top"
+animation = &"damaged_down"
 autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 
