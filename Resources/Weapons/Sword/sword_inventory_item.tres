@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://ch3olqyfjard4"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="1_df2ue"]
+[ext_resource type="Shape2D" uid="uid://w42boht4frjl" path="res://Resources/Weapons/Sword/sword_ground_collision_shape.tres" id="1_lgyq7"]
+[ext_resource type="Texture2D" uid="uid://bgx8jrk07vopi" path="res://Assets/sprites/Weapon/00_weapon.png" id="2_17kgk"]
+
+[resource]
+script = ExtResource("1_df2ue")
+slot_type = "Weapon"
+ground_collision_shape = ExtResource("1_lgyq7")
+name = "Sword"
+texture = ExtResource("2_17kgk")
+max_stacks = 1
+price = 50
+food = false

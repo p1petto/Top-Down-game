@@ -14,3 +14,4 @@ var slot_type: String = "NotEquipable"
 @export var max_stacks: int
 @export var price: int
 @export var food: bool
+@export var weapon_item: WeaponItem
