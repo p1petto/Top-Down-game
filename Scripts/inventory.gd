@@ -38,7 +38,7 @@ func add_item(item: InventoryItem, stacks: int):
 			#items[idx] = item
 		#else: 
 			#items.append(item)
-		#inventory_ui.add_item(item)
+		inventory_ui.add_item(item)
 		#taken_inventory_slots_count += 1
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
@@ -57,20 +57,20 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		if inventory_item.stacks + stacks <= item.max_stacks:
 			inventory_item.stacks += stacks 
 			items[item_index] = inventory_item
-			#inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
 		else:
 			var stacks_diff = inventory_item.stacks + stacks - item.max_stacks
 			var additional_inventory_item = inventory_item.duplicate(true)
 			inventory_item.stacks = item.max_stacks
-			#inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, item_index)
+			inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, item_index)
 			additional_inventory_item.stacks = stacks_diff
 			items.append(additional_inventory_item)
-			#inventory_ui.add_item(additional_inventory_item)	
+			inventory_ui.add_item(additional_inventory_item)	
 			#taken_inventory_slots_count += 1
 	else:
 		item.stacks = stacks
 		items.append(item)
-		#inventory_ui.add_item(item)	
+		inventory_ui.add_item(item)	
 		#taken_inventory_slots_count += 1
 #
 #func on_item_equipped(idx: int, slot_to_equip: String):
