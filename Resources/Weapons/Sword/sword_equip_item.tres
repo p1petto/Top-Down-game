@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=2 format=3 uid="uid://dqm2xl6todp8r"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/weapon_item.gd" id="1_ci4kn"]
+
+[resource]
+script = ExtResource("1_ci4kn")
+damage = 15
+type = "Combat"

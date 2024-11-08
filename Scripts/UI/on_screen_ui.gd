@@ -6,7 +6,8 @@ class_name OnScreenUI
 
 
 @onready var slots_dictionary = {
-	"Weapon": hand_slot
+	"Weapon": hand_slot,
+	"Tool": hand_slot
 }
 
 func equip_item(item: InventoryItem, slot_to_equip: String):

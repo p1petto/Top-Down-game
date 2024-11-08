@@ -4,4 +4,4 @@ class_name WeaponItem
 
 
 @export var damage = 15
-@export_enum("Combat", "Tool") var attack_type: String
+@export_enum("Combat", "Tool") var type: String

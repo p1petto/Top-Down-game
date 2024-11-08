@@ -4,8 +4,9 @@ class_name InventoryItem
 
 var stacks = 1
 
-@export_enum("Craft", "Weapon", "NotEquipable") 
+@export_enum("Tool", "Weapon", "NotEquipable") 
 var slot_type: String = "NotEquipable"
+
 
 @export var ground_collision_shape: CapsuleShape2D
 @export var name: String = ""
@@ -14,4 +15,5 @@ var slot_type: String = "NotEquipable"
 @export var max_stacks: int
 @export var price: int
 @export var food: bool
+@export var damage: int = 0
 @export var weapon_item: WeaponItem

@@ -13,3 +13,4 @@ texture = ExtResource("2_17kgk")
 max_stacks = 1
 price = 50
 food = false
+damage = 15

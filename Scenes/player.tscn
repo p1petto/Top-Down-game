@@ -1,11 +1,10 @@
-[gd_scene load_steps=69 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=68 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Texture2D" uid="uid://dhqecnusgi4ul" path="res://Assets/sprites/characters/player.png" id="1_vfj18"]
 [ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="3_hf18r"]
 [ext_resource type="Shape2D" uid="uid://dmfwm70i2xkjt" path="res://Resources/Player/player_collision_shape.tres" id="4_0cbvg"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_qk3vs"]
-[ext_resource type="Script" path="res://Scripts/combat_system.gd" id="5_8jv4t"]
 [ext_resource type="PackedScene" uid="uid://dcl7imohtnsbj" path="res://Scenes/UI/inventrory_ui.tscn" id="7_64pfr"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_3l3ao"]
 [ext_resource type="PackedScene" uid="uid://btfhto224r8q8" path="res://Scenes/UI/on_screen_ui.tscn" id="9_qc5g0"]
@@ -536,10 +535,6 @@ zoom = Vector2(3, 3)
 
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("4_qk3vs")
-
-[node name="CombatSystem" type="Node2D" parent="."]
-position = Vector2(-2, -11)
-script = ExtResource("5_8jv4t")
 
 [node name="AreaPickUp" type="Area2D" parent="."]
 collision_layer = 0
