@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=69 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Texture2D" uid="uid://dhqecnusgi4ul" path="res://Assets/sprites/characters/player.png" id="1_vfj18"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/combat_system.gd" id="5_8jv4t"]
 [ext_resource type="PackedScene" uid="uid://dcl7imohtnsbj" path="res://Scenes/UI/inventrory_ui.tscn" id="7_64pfr"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_3l3ao"]
+[ext_resource type="PackedScene" uid="uid://btfhto224r8q8" path="res://Scenes/UI/on_screen_ui.tscn" id="9_qc5g0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ontvb"]
 atlas = ExtResource("1_vfj18")
@@ -483,6 +484,8 @@ radius = 9.0
 collision_layer = 2
 script = ExtResource("1_urfjx")
 max_health = 50
+
+[node name="OnScreenUI" parent="." instance=ExtResource("9_qc5g0")]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

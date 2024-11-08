@@ -2,9 +2,9 @@ extends CanvasLayer
 
 class_name InventoryUI
 
-#signal drop_item_on_the_ground(idx: int)
-#signal equip_item(idx: int, slot_to_equip)
-#signal spell_slot_clicked(idx: int)
+signal drop_item_on_the_ground(idx: int)
+signal equip_item(idx: int, slot_to_equip)
+signal spell_slot_clicked(idx: int)
 #
 @onready var grid_container: GridContainer = %GridContainer
 
@@ -27,7 +27,7 @@ func _ready():
 		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
 		grid_container.add_child(inventory_slot)
 		
-		#inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(i, slot_to_equip))
+		inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(i, slot_to_equip))
 		#inventory_slot.drop_item.connect(func (): drop_item_on_the_ground.emit(i))
 
 	#for i in spell_slots.size():

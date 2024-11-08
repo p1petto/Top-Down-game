@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf8xup5jaru26"]
+
+[ext_resource type="Script" path="res://Scripts/UI/on_screen_equipment_slot.gd" id="1_sh7fk"]
+[ext_resource type="Texture2D" uid="uid://cfrqpqjlgsg6y" path="res://Assets/sprites/UI/FacesetBox.png" id="2_osh3e"]
+
+[node name="OnScreenEquipmentSlot" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sh7fk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_osh3e")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="StacksLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 31.0
+offset_right = 54.0
+offset_bottom = 54.0
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "WEAPON"
+horizontal_alignment = 1
+vertical_alignment = 1

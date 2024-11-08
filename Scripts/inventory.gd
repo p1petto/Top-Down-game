@@ -5,7 +5,7 @@ class_name Inventory
 #signal spell_activated(spell_index: int)
 #
 @onready var inventory_ui: InventoryUI = $"../InventroryUI"
-#@onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
+@onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
 #@onready var combat_system: CombatSystem = $"../CombatSystem"
 #@onready var animated_sprite_2d: AnimationController = $"../AnimatedSprite2D"
 #
@@ -17,8 +17,8 @@ class_name Inventory
 #var taken_inventory_slots_count = 0
 #var selected_spell_index = -1 
 #
-#func _ready() -> void:
-	#inventory_ui.equip_item.connect(on_item_equipped)
+func _ready() -> void:
+	inventory_ui.equip_item.connect(on_item_equipped)
 	#inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	#inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
 
@@ -72,10 +72,11 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		items.append(item)
 		inventory_ui.add_item(item)	
 		#taken_inventory_slots_count += 1
-#
-#func on_item_equipped(idx: int, slot_to_equip: String):
-	#var item_to_equip = items[idx]
-	#on_screen_ui.equip_item(item_to_equip, slot_to_equip)
+
+func on_item_equipped(idx: int, slot_to_equip: String):
+	var item_to_equip = items[idx]
+	print_debug(item_to_equip.name)
+	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
 	#combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)
 	#
 	#check_magic_ui_visibility()

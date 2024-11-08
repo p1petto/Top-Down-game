@@ -192,6 +192,7 @@ value = 50.0
 script = ExtResource("7_5ihua")
 
 [node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
+visible = false
 
 [node name="PickupItem" parent="." instance=ExtResource("10_p0a0i")]
 position = Vector2(116, -21)
