@@ -3,7 +3,7 @@ extends CanvasLayer
 class_name OnScreenUI
 
 @onready var hand_slot: OnScreenEquipmentSlot = %HandSlot
-
+@onready var player: Player = $"../"
 
 @onready var slots_dictionary = {
 	"Weapon": hand_slot,
@@ -11,4 +11,6 @@ class_name OnScreenUI
 }
 
 func equip_item(item: InventoryItem, slot_to_equip: String):
+	player.equipped = true
+	player.power = item.damage
 	slots_dictionary[slot_to_equip].set_equipment_texture(item.texture)

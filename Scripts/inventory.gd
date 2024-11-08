@@ -6,7 +6,7 @@ class_name Inventory
 #
 @onready var inventory_ui: InventoryUI = $"../InventroryUI"
 @onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
-@onready var player: Player = $"../"
+
 #@onready var animated_sprite_2d: AnimationController = $"../AnimatedSprite2D"
 #
 #const PICKUP_ITEM_SCENE = preload("res://Scenes/pickup_item.tscn")
@@ -77,7 +77,7 @@ func on_item_equipped(idx: int, slot_to_equip: String):
 	var item_to_equip = items[idx]
 	print_debug(item_to_equip.name)
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
-	player.equipped = true
+	
 	#combat_system.set_active_weapon(item_to_equip.weapon_item, slot_to_equip)
 	#
 	#check_magic_ui_visibility()

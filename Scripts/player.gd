@@ -18,6 +18,7 @@ enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE }
 var current_state : State = State.IDLE : set = set_state
 
 var equipped = false
+var power: int = 0
 
 func set_state(new_state: int) -> void:
 	current_state = new_state
@@ -86,7 +87,7 @@ func on_player_dead():
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		body.health_system.apply_damage(3)
+		body.health_system.apply_damage(power)
 		print("Enemy health: ", body.health_system.current_health)
 		knockback_direction = body.global_position - global_position
 		knockback_direction *= knockback_power 
