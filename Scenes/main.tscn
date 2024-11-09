@@ -167,6 +167,7 @@ max_health = 40
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_2l0yv")]
 position = Vector2(-195, -34)
+collision_mask = 33
 
 [node name="EnemyPatrolPath" type="Node2D" parent="TileMap"]
 
