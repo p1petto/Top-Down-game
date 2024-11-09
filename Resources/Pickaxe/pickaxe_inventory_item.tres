@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://w4h143kvm1wj"]
+
+[ext_resource type="Shape2D" uid="uid://ctlgnos0kovhy" path="res://Resources/Pickaxe/pickaxe_ground_collision_shape.tres" id="1_xm7vv"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="2_p6tfw"]
+[ext_resource type="Texture2D" uid="uid://tqa5mo4f8ul5" path="res://Assets/sprites/Weapon/28_weapon.png" id="3_7aklm"]
+
+[resource]
+script = ExtResource("2_p6tfw")
+slot_type = "Weapon"
+tool_type = "Pickaxe"
+ground_collision_shape = ExtResource("1_xm7vv")
+name = "Pickaxe"
+texture = ExtResource("3_7aklm")
+max_stacks = 1
+price = 50
+food = false
+damage = 5

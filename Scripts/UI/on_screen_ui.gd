@@ -13,4 +13,6 @@ class_name OnScreenUI
 func equip_item(item: InventoryItem, slot_to_equip: String):
 	player.equipped = true
 	player.power = item.damage
+	player.tool_type = item.tool_type
+	player.power = item.damage
 	slots_dictionary[slot_to_equip].set_equipment_texture(item.texture)

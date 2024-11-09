@@ -1,9 +1,10 @@
-[gd_scene load_steps=68 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=81 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Texture2D" uid="uid://dhqecnusgi4ul" path="res://Assets/sprites/characters/player.png" id="1_vfj18"]
 [ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="3_hf18r"]
 [ext_resource type="Shape2D" uid="uid://dmfwm70i2xkjt" path="res://Resources/Player/player_collision_shape.tres" id="4_0cbvg"]
+[ext_resource type="Texture2D" uid="uid://ybk4cjmmnyjo" path="res://Assets/sprites/characters/player_mining.png" id="4_lfcn4"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_qk3vs"]
 [ext_resource type="PackedScene" uid="uid://dcl7imohtnsbj" path="res://Scenes/UI/inventrory_ui.tscn" id="7_64pfr"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_3l3ao"]
@@ -164,6 +165,54 @@ region = Rect2(192, 96, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8oel"]
 atlas = ExtResource("1_vfj18")
 region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3abt"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0x1s"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk6ai"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tl7k"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_karrf"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y87k8"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af1qk"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvey7"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi0c1"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rha6y"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo2wm"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn0ln"]
+atlas = ExtResource("4_lfcn4")
+region = Rect2(144, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glwri"]
 atlas = ExtResource("1_vfj18")
@@ -425,6 +474,57 @@ animations = [{
 "speed": 7.0
 }, {
 "frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_d3abt")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_w0x1s")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_pk6ai")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_8tl7k")
+}],
+"loop": false,
+"name": &"mining_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_karrf")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_y87k8")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_af1qk")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_lvey7")
+}],
+"loop": false,
+"name": &"mining_horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_wi0c1")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_rha6y")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_eo2wm")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_bn0ln")
+}],
+"loop": false,
+"name": &"mining_top",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_glwri")
 }, {
@@ -508,7 +608,7 @@ max_health = 50
 texture_filter = 1
 position = Vector2(-2, -11)
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"damaged_down"
+animation = &"mining_top"
 autoplay = "idle_down"
 script = ExtResource("3_hf18r")
 

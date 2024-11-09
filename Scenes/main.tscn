@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=20 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
-[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/gold_coin.tres" id="12_xevbu"]
+[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/GoldCoin/gold_coin.tres" id="12_xevbu"]
 [ext_resource type="Resource" uid="uid://ch3olqyfjard4" path="res://Resources/Weapons/Sword/sword_inventory_item.tres" id="13_p3nja"]
+[ext_resource type="Resource" uid="uid://w4h143kvm1wj" path="res://Resources/Pickaxe/pickaxe_inventory_item.tres" id="14_6s6jg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vei56"]
 texture = ExtResource("1_m8xdr")
@@ -210,3 +211,7 @@ inventory_item = ExtResource("13_p3nja")
 position = Vector2(115, 5)
 inventory_item = ExtResource("12_xevbu")
 stacks = 53
+
+[node name="PickupItem4" parent="." instance=ExtResource("10_p0a0i")]
+position = Vector2(-22, 84)
+inventory_item = ExtResource("14_6s6jg")

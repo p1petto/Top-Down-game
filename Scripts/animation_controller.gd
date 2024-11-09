@@ -6,6 +6,7 @@ class_name AnimationController
 
 signal attack_animation_finished
 signal damage_animation_finished
+signal mining_animation_finished
 
 const MOVEMENT_TO_IDLE = {
 	"walk_top": "idle_top",
@@ -17,6 +18,12 @@ const DIRECTION_TO_ATTACK_ANIMATION = {
 	"top": "attack_top",
 	"down": "attack_down",
 	"horizontal": "attack_horizontal"
+}
+
+const DIRECTION_TO_MINING_ANIMATION = {
+	"top": "mining_top",
+	"down": "mining_down",
+	"horizontal": "mining_horizontal"
 }
 
 const TO_DAMAGE = {
@@ -70,6 +77,18 @@ func play_attack_animation():
 			attak_collision.position = COLLISION_ATTAK_POSITION["left"]
 	else:	
 		attak_collision.position = COLLISION_ATTAK_POSITION[direction]
+		
+func play_mining_animation():
+	var direction = animation.split("_")[1]
+	attack_direction = direction
+	play(DIRECTION_TO_MINING_ANIMATION[direction])
+	if (str(direction) == "horizontal"):
+		if flip_h == false:
+			attak_collision.position = COLLISION_ATTAK_POSITION["right"]
+		else:
+			attak_collision.position = COLLISION_ATTAK_POSITION["left"]
+	else:	
+		attak_collision.position = COLLISION_ATTAK_POSITION[direction]
 	
 func play_damaged_animation():
 	if TO_DAMAGE.keys().has(animation):
@@ -84,6 +103,15 @@ func _on_animation_finished() -> void:
 		play("idle_" + direction)
 		attack_direction = null
 		attack_animation_finished.emit()
+		
+	if DIRECTION_TO_MINING_ANIMATION.values().has(animation):
+		var animation_string = String(animation)
+		var direction = DIRECTION_TO_MINING_ANIMATION.find_key(animation_string)
+		
+		play("idle_" + direction)
+		attack_direction = null
+		mining_animation_finished.emit()
+		
 	if TO_DAMAGE.values().has(animation):
 		var direction = animation.split("_")[1]
 		play("idle_" + direction)

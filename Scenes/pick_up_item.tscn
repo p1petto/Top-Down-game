@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b52u86hihmd0s"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/pick_up_item.gd" id="1_r1psv"]
-[ext_resource type="Texture2D" uid="uid://bgx8jrk07vopi" path="res://Assets/sprites/Weapon/00_weapon.png" id="2_o2jd1"]
-[ext_resource type="Shape2D" uid="uid://w42boht4frjl" path="res://Resources/Weapons/Sword/sword_ground_collision_shape.tres" id="3_m2p52"]
+[ext_resource type="Texture2D" uid="uid://tqa5mo4f8ul5" path="res://Assets/sprites/Weapon/28_weapon.png" id="2_clcqv"]
+[ext_resource type="Shape2D" uid="uid://ctlgnos0kovhy" path="res://Resources/Pickaxe/pickaxe_ground_collision_shape.tres" id="3_kwweu"]
 
 [node name="PickUpItem" type="Area2D"]
 collision_layer = 8
@@ -12,9 +12,9 @@ script = ExtResource("1_r1psv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 4)
-texture = ExtResource("2_o2jd1")
+texture = ExtResource("2_clcqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
 rotation = 0.724312
-shape = ExtResource("3_m2p52")
+shape = ExtResource("3_kwweu")
