@@ -8,7 +8,8 @@ class_name Inventory
 @onready var on_screen_ui: OnScreenUI = $"../OnScreenUI"
 @onready var player: Player = $"../"
 @onready var animated_sprite_2d: AnimationController = $"../Sprite2D"
-#
+@onready var world = $"../../"
+
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
 # items currently in inventory
@@ -100,7 +101,7 @@ func eject_item_into_the_ground(idx: int):
 	item_to_eject_as_pickup.stacks = inventory_item_to_eject.stacks
 	
 	get_tree().root.add_child(item_to_eject_as_pickup)
-	
+	#world.add_child(item_to_eject_as_pickup)
 	item_to_eject_as_pickup.disable_collision()
 	item_to_eject_as_pickup.global_position = get_parent().global_position
 	
@@ -144,6 +145,3 @@ func eject_item_into_the_ground(idx: int):
 	#
 	#
 	#
-	
-	
-	
