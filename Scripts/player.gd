@@ -12,9 +12,11 @@ const SPEED = 5000.0
 
 @export var max_health: int
 
-var equipped_tool = false
-@export_enum("Pickaxe", "Sword", "NoType") 
-var tool_type: String = "NoType"
+#var equipped_tool = false
+#@export_enum("Pickaxe", "Sword", "NoType") 
+#var tool_type: String = "NoType"
+
+@export var hand_weapon: InventoryItem
 
 var enemies_group = null
 var knockback_direction = null
@@ -22,8 +24,8 @@ var knockback_power = 100
 enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE, MINING }
 var current_state : State = State.IDLE : set = set_state
 
-var equipped = false
-var power: int = 0
+#var equipped = false
+#var power: int = 0
 
 
 func set_state(new_state: int) -> void:
@@ -101,7 +103,7 @@ func on_player_dead():
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		body.health_system.apply_damage(power)
+		body.health_system.apply_damage(hand_weapon.damage)
 		print("Enemy health: ", body.health_system.current_health)
 		knockback_direction = body.global_position - global_position
 		knockback_direction *= knockback_power 
@@ -109,11 +111,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 func _input(_event):
 	if Input.is_action_just_pressed("left_hand_attack"):
-		if equipped:
-			if tool_type == "Sword":
+		if hand_weapon != null:
+			if hand_weapon.tool_type == "Sword":
 				if current_state != State.DAMAGED and current_state != State.DIED:
 					current_state = State.ATTACK
-			if tool_type == "Pickaxe":
+			if hand_weapon.tool_type == "Pickaxe":
 				if current_state != State.DAMAGED and current_state != State.DIED:
 					current_state = State.MINING
 			
@@ -144,3 +146,8 @@ func _on_area_pick_up_area_entered(area: Area2D) -> void:
 	if area is PickUpItem:
 		inventory.add_item(area.inventory_item, area.stacks)
 		area.queue_free()
+		
+func set_active_weapon(weapon: InventoryItem, slot_to_equip: String):
+	
+	if slot_to_equip == "Weapon":
+		hand_weapon = weapon

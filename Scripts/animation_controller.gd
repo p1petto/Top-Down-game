@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 class_name AnimationController
 
 @onready var attak_collision: CollisionShape2D = $"../Area2D/AttakCollision"
+var item_eject_direction = Vector2.DOWN
 
 signal attack_animation_finished
 signal damage_animation_finished
@@ -50,16 +51,20 @@ var attack_direction = null
 func play_movement_animation(velocity: Vector2):
 	if velocity.x > 0:
 		flip_h = false
+		item_eject_direction = Vector2.RIGHT
 		play("walk_horizontal")
 	elif velocity.x < 0:
 		flip_h = true
+		item_eject_direction = Vector2.LEFT
 		play("walk_horizontal")
 	
 	elif velocity.y > 0:
 		flip_h = false
+		item_eject_direction = Vector2.DOWN
 		play("walk_down")
 	elif velocity.y < 0:
 		flip_h = false
+		item_eject_direction = Vector2.UP
 		play("walk_top")
 
 func play_idle_animation():
