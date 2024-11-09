@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=22 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
+[ext_resource type="PackedScene" uid="uid://dvk7od4v07rh" path="res://Scenes/resource_item.tscn" id="10_wsxvo"]
+[ext_resource type="Resource" uid="uid://btdoaxwyiqj4l" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource.tres" id="11_ulk1a"]
 [ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/GoldCoin/gold_coin.tres" id="12_xevbu"]
 [ext_resource type="Resource" uid="uid://ch3olqyfjard4" path="res://Resources/Weapons/Sword/sword_inventory_item.tres" id="13_p3nja"]
 [ext_resource type="Resource" uid="uid://w4h143kvm1wj" path="res://Resources/Pickaxe/pickaxe_inventory_item.tres" id="14_6s6jg"]
@@ -180,6 +182,28 @@ position = Vector2(-6, 29)
 [node name="NPC" parent="TileMap" instance=ExtResource("7_oa6l2")]
 position = Vector2(-144, -56)
 
+[node name="PickupItem" parent="TileMap" instance=ExtResource("10_p0a0i")]
+position = Vector2(115, -21)
+inventory_item = ExtResource("12_xevbu")
+stacks = 88
+
+[node name="PickupItem2" parent="TileMap" instance=ExtResource("10_p0a0i")]
+position = Vector2(-91, -74)
+inventory_item = ExtResource("13_p3nja")
+
+[node name="PickupItem3" parent="TileMap" instance=ExtResource("10_p0a0i")]
+position = Vector2(114, 5)
+inventory_item = ExtResource("12_xevbu")
+stacks = 53
+
+[node name="PickupItem4" parent="TileMap" instance=ExtResource("10_p0a0i")]
+position = Vector2(-23, 84)
+inventory_item = ExtResource("14_6s6jg")
+
+[node name="ResourceItem" parent="TileMap" instance=ExtResource("10_wsxvo")]
+position = Vector2(-165, -10)
+useful_resource = ExtResource("11_ulk1a")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="UI" instance=ExtResource("6_5xwwq")]
@@ -197,21 +221,3 @@ script = ExtResource("7_5ihua")
 
 [node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
 visible = false
-
-[node name="PickupItem" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(116, -21)
-inventory_item = ExtResource("12_xevbu")
-stacks = 88
-
-[node name="PickupItem2" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(-90, -74)
-inventory_item = ExtResource("13_p3nja")
-
-[node name="PickupItem3" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(115, 5)
-inventory_item = ExtResource("12_xevbu")
-stacks = 53
-
-[node name="PickupItem4" parent="." instance=ExtResource("10_p0a0i")]
-position = Vector2(-22, 84)
-inventory_item = ExtResource("14_6s6jg")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvk7od4v07rh"]
+
+[ext_resource type="Script" path="res://Scripts/UsefulResources/resource_item.gd" id="1_uj5n0"]
+[ext_resource type="Texture2D" uid="uid://bhnnwn1k42ph5" path="res://Assets/sprites/objects/rocks_shadow-1.png" id="2_b0iy8"]
+[ext_resource type="Shape2D" uid="uid://d3o6psu1h6b0t" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource_collision_shape.tres" id="3_ny10t"]
+
+[node name="ResourceItem" type="Area2D"]
+collision_layer = 32
+collision_mask = 255
+script = ExtResource("1_uj5n0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_b0iy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = ExtResource("3_ny10t")

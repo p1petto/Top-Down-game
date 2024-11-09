@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UsefulResource" load_steps=4 format=3 uid="uid://btdoaxwyiqj4l"]
+
+[ext_resource type="Shape2D" uid="uid://d3o6psu1h6b0t" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource_collision_shape.tres" id="1_3qubr"]
+[ext_resource type="Script" path="res://Scripts/UsefulResources/useful_resource.gd" id="2_27aj2"]
+[ext_resource type="Texture2D" uid="uid://bhnnwn1k42ph5" path="res://Assets/sprites/objects/rocks_shadow-1.png" id="3_lmfvc"]
+
+[resource]
+script = ExtResource("2_27aj2")
+ground_collision_shape = ExtResource("1_3qubr")
+name = "Stone"
+texture = ExtResource("3_lmfvc")
+max_stacks = 100
+price = 1
+food = false
