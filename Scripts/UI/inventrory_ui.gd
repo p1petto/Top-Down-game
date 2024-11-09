@@ -34,7 +34,14 @@ func _ready():
 		#spell_slots[i].slot_clicked.connect(on_spell_slot_clicked.bind(i))
 
 func toggle():
-	visible = !visible
+	#visible = !visible
+	if visible == true:
+		visible = false
+		get_tree().paused = false
+		
+	else:
+		visible = true
+		get_tree().paused = true
 
 
 func add_item(item: InventoryItem):

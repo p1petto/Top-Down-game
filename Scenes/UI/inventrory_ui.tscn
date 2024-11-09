@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bi3wijiujryqc" path="res://Assets/sprites/UI/DialogBoxFaceset.png" id="2_e1abh"]
 
 [node name="InventroryUI" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_0yrkr")
 
 [node name="ColorRect" type="ColorRect" parent="."]

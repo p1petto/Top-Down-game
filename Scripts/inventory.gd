@@ -25,6 +25,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_ui.toggle()
+		
 
 
 func add_item(item: InventoryItem, stacks: int):

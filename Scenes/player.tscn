@@ -548,6 +548,7 @@ shape = ExtResource("4_0cbvg")
 visible = false
 
 [node name="Inventory" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("8_3l3ao")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
