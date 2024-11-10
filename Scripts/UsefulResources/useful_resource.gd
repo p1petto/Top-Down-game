@@ -9,3 +9,4 @@ class_name UsefulResource
 @export var max_stacks: int
 @export var price: int
 @export var food: bool
+@export var durability: int = 15
