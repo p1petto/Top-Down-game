@@ -103,14 +103,12 @@ func on_player_dead():
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		print ("Slime apply damage")
 		body.health_system.apply_damage(hand_weapon.damage)
 		print("Enemy health: ", body.health_system.current_health)
 		knockback_direction = body.global_position - global_position
 		knockback_direction *= knockback_power 
 		body.knockback(knockback_direction)
 	elif body.is_in_group("UsefullResources") and hand_weapon.tool_type == "Pickaxe":
-		print ("Stone apply damage")
 		body.apply_damage(hand_weapon.damage)
 		
 func _input(_event):

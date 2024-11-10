@@ -27,5 +27,5 @@ func apply_damage(damage_amount: int) -> void:
 		handle_destruction()
 
 func handle_destruction() -> void:
-	disable_collision()
-	queue_free()
+	call_deferred("disable_collision")
+	call_deferred("queue_free")
