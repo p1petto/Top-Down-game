@@ -44,35 +44,43 @@ func add_item(item: InventoryItem, stacks: int):
 		taken_inventory_slots_count += 1
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
-	#	IS ITEM ALREADY IN INVENTORY	
-	# we have to reverse search 
-	var item_index = -1
+	
+	var empty_slot_index = items.find(null)
+	var existing_item_index = -1
+	
 	for i in items.size():
 		if items[i] != null and items[i].name == item.name:
-			item_index = i
+			existing_item_index = i
+			break
 	
-	if item_index != -1:
-		# add stacks to found item
-		
-		var inventory_item = items[item_index]
-		#		can we add current stack to item in inventory
+	if existing_item_index != -1:
+		var inventory_item = items[existing_item_index]
 		if inventory_item.stacks + stacks <= item.max_stacks:
 			inventory_item.stacks += stacks 
-			items[item_index] = inventory_item
-			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, item_index)
+			items[existing_item_index] = inventory_item
+			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, existing_item_index)
 		else:
 			var stacks_diff = inventory_item.stacks + stacks - item.max_stacks
 			var additional_inventory_item = inventory_item.duplicate(true)
 			inventory_item.stacks = item.max_stacks
-			inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, item_index)
+			inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, existing_item_index)
+			
 			additional_inventory_item.stacks = stacks_diff
-			items.append(additional_inventory_item)
-			inventory_ui.add_item(additional_inventory_item)	
+			if empty_slot_index != -1:
+				items[empty_slot_index] = additional_inventory_item
+				inventory_ui.add_item(additional_inventory_item)
+			else:
+				items.append(additional_inventory_item)
+				inventory_ui.add_item(additional_inventory_item)
 			taken_inventory_slots_count += 1
 	else:
 		item.stacks = stacks
-		items.append(item)
-		inventory_ui.add_item(item)	
+		if empty_slot_index != -1:
+			items[empty_slot_index] = item
+			inventory_ui.add_item(item)
+		else:
+			items.append(item)
+			inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
 
 func on_item_equipped(idx: int, slot_to_equip: String):
