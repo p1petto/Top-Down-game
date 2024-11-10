@@ -8,13 +8,14 @@ class_name Enemy
 @export var max_health = 10
 
 @export var dropped_resource: InventoryItem 
+const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
 @onready var animated_sprite_2d: AnimationControllerEnemy = $AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
-const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
+
 
 var current_patrol_target: int = 0
 var wait_timer := 0.0
@@ -79,7 +80,7 @@ func on_dead():
 	collision_shape_2d.set_deferred("disabled", true)
 	area_collision_shape_2d.set_deferred("disabled", true)
 	animated_sprite_2d.play("died")
-	eject_item_into_the_ground()  # Выбрасываем предмет
+	eject_item_into_the_ground() 
 
 
 

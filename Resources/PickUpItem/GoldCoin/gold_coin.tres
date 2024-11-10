@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bhjkqosjrdoso"]
 
-[ext_resource type="Shape2D" uid="uid://dt6ypm2quj47m" path="res://Resources/GoldCoin/gold_coin_collision_shape.tres" id="1_ewqsp"]
+[ext_resource type="Shape2D" uid="uid://dt6ypm2quj47m" path="res://Resources/PickUpItem/GoldCoin/gold_coin_collision_shape.tres" id="1_ewqsp"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="2_y2to8"]
 [ext_resource type="Texture2D" uid="uid://ch844vl21nugx" path="res://Assets/sprites/Items/GoldCoin.png" id="3_0kejr"]
 

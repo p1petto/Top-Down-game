@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=23 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
 [ext_resource type="PackedScene" uid="uid://dvk7od4v07rh" path="res://Scenes/resource_item.tscn" id="10_wsxvo"]
 [ext_resource type="Resource" uid="uid://btdoaxwyiqj4l" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource.tres" id="11_ulk1a"]
-[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/GoldCoin/gold_coin.tres" id="12_xevbu"]
+[ext_resource type="Resource" uid="uid://bcepdfnrx885a" path="res://Resources/PickUpItem/StonePickUpItem/stone_pick_up_item.tres" id="12_dp8j4"]
+[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/PickUpItem/GoldCoin/gold_coin.tres" id="12_xevbu"]
 [ext_resource type="Resource" uid="uid://ch3olqyfjard4" path="res://Resources/Weapons/Sword/sword_inventory_item.tres" id="13_p3nja"]
 [ext_resource type="Resource" uid="uid://w4h143kvm1wj" path="res://Resources/Weapons/Pickaxe/pickaxe_inventory_item.tres" id="14_6s6jg"]
 
@@ -200,12 +201,14 @@ inventory_item = ExtResource("12_xevbu")
 stacks = 53
 
 [node name="PickupItem4" parent="TileMap" instance=ExtResource("10_p0a0i")]
-position = Vector2(-23, 84)
+position = Vector2(-154, -9)
 inventory_item = ExtResource("14_6s6jg")
 
 [node name="ResourceItem" parent="TileMap" groups=["UsefullResources"] instance=ExtResource("10_wsxvo")]
-position = Vector2(-165, -10)
+position = Vector2(-178, 0)
 useful_resource = ExtResource("11_ulk1a")
+stacks = 10
+dropped_resource = ExtResource("12_dp8j4")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
