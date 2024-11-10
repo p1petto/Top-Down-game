@@ -159,11 +159,13 @@ layer_1/tile_data = PackedInt32Array(262137, 131072, 5, 262138, 131072, 5, 26213
 position = Vector2(-30, -39)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3")]
 max_health = 40
+dropped_resource = ExtResource("12_xevbu")
 
 [node name="Enemy2" parent="TileMap" node_paths=PackedStringArray("patrol_path") groups=["Enemies"] instance=ExtResource("2_l0fdp")]
 position = Vector2(-79, 30)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3"), NodePath("../EnemyPatrolPath/Marker2D")]
 max_health = 40
+dropped_resource = ExtResource("12_xevbu")
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_2l0yv")]
 position = Vector2(-195, -34)

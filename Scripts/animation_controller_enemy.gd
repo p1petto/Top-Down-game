@@ -2,6 +2,8 @@ extends AnimationPlayer
 
 class_name AnimationControllerEnemy
 
+var item_eject_direction = Vector2.DOWN
+
 const MOVEMENT_TO_IDLE = {
 	"walk_top": "idle_top",
 	"walk_down": "idle_down",
@@ -28,18 +30,22 @@ func play_movement_animation(direction: Vector2):
 	if direction.x > 0 and absf(direction.x) > absf(direction.y):
 		play("walk_horizontal")
 		$"../Sprite2D".flip_h = false
+		item_eject_direction = Vector2.RIGHT
 		return
 	elif direction.x < 0 and absf(direction.x) > absf(direction.y):	
 		
 		play("walk_horizontal")
 		$"../Sprite2D".flip_h = true
+		item_eject_direction = Vector2.LEFT
 		return
 	
 	if direction.y > 0 and absf(direction.y) > absf(direction.x):
 		play("walk_down")
+		item_eject_direction = Vector2.DOWN
 		return
 	elif direction.y < 0 and absf(direction.y) > absf(direction.x):
 		play("walk_top")
+		item_eject_direction = Vector2.UP
 		return
 		
 

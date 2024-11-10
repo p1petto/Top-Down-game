@@ -7,10 +7,14 @@ class_name Enemy
 @export var patrol_wait_time = 1.0
 @export var max_health = 10
 
+@export var dropped_resource: InventoryItem 
+
 @onready var animated_sprite_2d: AnimationControllerEnemy = $AnimationPlayer
 @onready var health_system: HealthSystem = $HealthSystem
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+
+const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
 var current_patrol_target: int = 0
 var wait_timer := 0.0
@@ -72,9 +76,11 @@ func knockback(dir):
 
 func on_dead():
 	set_physics_process(false)
-	collision_shape_2d.set_deferred("disabled", true) 
-	area_collision_shape_2d.set_deferred("disabled", true) 
+	collision_shape_2d.set_deferred("disabled", true)
+	area_collision_shape_2d.set_deferred("disabled", true)
 	animated_sprite_2d.play("died")
+	eject_item_into_the_ground()  # Выбрасываем предмет
+
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -93,3 +99,19 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "died":
 		queue_free()
 		pass
+		
+func eject_item_into_the_ground():
+	if dropped_resource == null:
+		return
+	
+	var item_to_eject_as_pickup = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
+	item_to_eject_as_pickup.inventory_item = dropped_resource
+	item_to_eject_as_pickup.stacks = randi_range(1, 5)
+
+	get_tree().root.call_deferred("add_child", item_to_eject_as_pickup)
+
+	item_to_eject_as_pickup.call_deferred("disable_collision")  
+
+	item_to_eject_as_pickup.global_position = global_position
+
+	item_to_eject_as_pickup.call_deferred("enable_collision")
