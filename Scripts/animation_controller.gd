@@ -40,10 +40,10 @@ const TO_DAMAGE = {
 }
 
 const COLLISION_ATTAK_POSITION = {
-	"top": Vector2(0, -12),
-	"down": Vector2(0, 0),
-	"right": Vector2(8.5, -4),
-	"left": Vector2(-8.5, -4)
+	"top": Vector2(2, -24),
+	"down": Vector2(3, 1.5),
+	"right": Vector2(17, -12),
+	"left": Vector2(-9, -12)
 }
 
 var attack_direction = null

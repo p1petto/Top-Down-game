@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="5_fmyxb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg1jk"]
-radius = 4.00632
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_uyt6u"]
 length = 0.001
@@ -518,7 +518,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a100q"]
-radius = 3.0
+radius = 5.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -529,7 +529,6 @@ speed = 50.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(5, -2)
-scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("2_jfwv5")
 hframes = 7
 vframes = 13
