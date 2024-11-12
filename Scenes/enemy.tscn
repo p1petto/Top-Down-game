@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y4g5m"]
 [ext_resource type="Texture2D" uid="uid://mt8q8d6pa3m3" path="res://Assets/sprites/characters/slime.png" id="2_jfwv5"]
 [ext_resource type="Script" path="res://Scripts/animation_controller_enemy.gd" id="4_8xsf3"]
-[ext_resource type="Script" path="res://Scripts/health_system.gd" id="5_fmyxb"]
+[ext_resource type="Script" path="res://Scripts/health_system_enemy.gd" id="4_cmbyi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg1jk"]
 radius = 6.0
@@ -545,9 +545,6 @@ libraries = {
 autoplay = "idle_down"
 script = ExtResource("4_8xsf3")
 
-[node name="HealthSystem" type="Node" parent="."]
-script = ExtResource("5_fmyxb")
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -2)
 collision_layer = 0
@@ -557,6 +554,9 @@ collision_mask = 3
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_a100q")
 debug_color = Color(0.97717, 0, 0.406207, 0.42)
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("4_cmbyi")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -11,7 +11,7 @@ class_name Enemy
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
 @onready var animated_sprite_2d: AnimationControllerEnemy = $AnimationPlayer
-@onready var health_system: HealthSystem = $HealthSystem
+@onready var health_system_enemy: HealthSystemEnemy = $HealthSystem
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var area_collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
@@ -27,8 +27,8 @@ var acc = null
 
 	
 func _ready() -> void:
-	health_system.init(max_health)
-	health_system.died.connect(on_dead)
+	health_system_enemy.init(max_health)
+	health_system_enemy.died.connect(on_dead)
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
 	acc = 0.05
@@ -93,7 +93,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if current_state == State.DAMAGED:
 			return
 		body.health_system.apply_damage(3)
-		print("Player health: ", body.get_node("HealthSystem").current_health)
+		
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

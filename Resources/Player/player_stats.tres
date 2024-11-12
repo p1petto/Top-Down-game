@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://cxon4sqes6mku"]
+
+[ext_resource type="Script" path="res://Scripts/player_stats.gd" id="1_ddk76"]
+
+[resource]
+script = ExtResource("1_ddk76")
+max_health = 100
+current_health = 100
+speed = 5000.0
+knockback_power = 100
