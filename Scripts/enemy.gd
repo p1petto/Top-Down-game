@@ -86,14 +86,14 @@ func on_dead():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
-		var animation = $"../Player/Sprite2D".animation
+		var animation = body.get_node("Sprite2D").animation
 		if str(animation).contains("attack"):
 			if $"../Player/Sprite2D".frame <= 1:
 				return
 		if current_state == State.DAMAGED:
 			return
 		body.health_system.apply_damage(3)
-		print("Player health: ", $"../Player/HealthSystem".current_health)
+		print("Player health: ", body.get_node("HealthSystem").current_health)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

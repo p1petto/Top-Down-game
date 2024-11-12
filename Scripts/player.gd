@@ -38,6 +38,8 @@ func _ready() -> void:
 	animated_sprite_2d.damage_animation_finished.connect(on_damage_animation_finished)
 	animated_sprite_2d.attack_animation_finished.connect(on_attack_animation_finished)
 	animated_sprite_2d.mining_animation_finished.connect(on_mining_animation_finished)
+	health_system.current_health = max_health
+	health_system.health_changed.emit()
 
 
 func _physics_process(delta: float) -> void:

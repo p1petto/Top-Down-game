@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=82 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="3_hf18r"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_3l3ao"]
 [ext_resource type="Texture2D" uid="uid://cvm0usfca1ap0" path="res://Assets/sprites/characters/Player/walk-Sheet.png" id="8_tdgk4"]
 [ext_resource type="PackedScene" uid="uid://btfhto224r8q8" path="res://Scenes/UI/on_screen_ui.tscn" id="9_qc5g0"]
+[ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/sprites/UI/healthbarUnder.png" id="14_y2xsh"]
+[ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="15_wkeua"]
+[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="16_oqtiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nmsa"]
 atlas = ExtResource("3_ka05o")
@@ -528,10 +531,15 @@ animations = [{
 radius = 13.0
 height = 28.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8vsp"]
+texture = ExtResource("14_y2xsh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6uvu"]
+texture = ExtResource("15_wkeua")
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_urfjx")
-max_health = 50
 
 [node name="OnScreenUI" parent="." instance=ExtResource("9_qc5g0")]
 
@@ -582,6 +590,19 @@ visible = false
 [node name="Inventory" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("8_3l3ao")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 100
+texture_filter = 1
+offset_left = 49.0
+offset_top = -112.0
+offset_right = 175.0
+offset_bottom = -100.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxTexture_k8vsp")
+theme_override_styles/fill = SubResource("StyleBoxTexture_t6uvu")
+value = 50.0
+script = ExtResource("16_oqtiy")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

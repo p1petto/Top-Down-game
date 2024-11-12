@@ -1,14 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=18 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
 [ext_resource type="Texture2D" uid="uid://1jcjiwddsl6t" path="res://Assets/sprites/tilesets/fences.png" id="2_20l8x"]
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="2_l0fdp"]
 [ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/UI/dialogue.tscn" id="6_5xwwq"]
-[ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/sprites/UI/healthbarUnder.png" id="7_0jqog"]
-[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="7_5ihua"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
-[ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="8_t66xt"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
 [ext_resource type="PackedScene" uid="uid://dvk7od4v07rh" path="res://Scenes/resource_item.tscn" id="10_wsxvo"]
@@ -130,12 +127,6 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_vei56")
 sources/1 = SubResource("TileSetAtlasSource_3ni1f")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m8df"]
-texture = ExtResource("7_0jqog")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b2ng"]
-texture = ExtResource("8_t66xt")
-
 [node name="World" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
@@ -213,17 +204,6 @@ dropped_resource = ExtResource("12_dp8j4")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="UI" instance=ExtResource("6_5xwwq")]
-
-[node name="ProgressBar" type="ProgressBar" parent="UI"]
-texture_filter = 1
-offset_left = 904.0
-offset_top = 10.0
-offset_right = 1128.0
-offset_bottom = 46.0
-theme_override_styles/background = SubResource("StyleBoxTexture_2m8df")
-theme_override_styles/fill = SubResource("StyleBoxTexture_7b2ng")
-value = 50.0
-script = ExtResource("7_5ihua")
 
 [node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
 visible = false
