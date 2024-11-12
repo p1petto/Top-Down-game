@@ -539,9 +539,8 @@ max_health = 50
 texture_filter = 1
 position = Vector2(2, -10)
 sprite_frames = SubResource("SpriteFrames_buo1l")
-animation = &"attack_top"
+animation = &"idle_down"
 autoplay = "idle_down"
-frame = 2
 flip_h = true
 script = ExtResource("3_hf18r")
 
