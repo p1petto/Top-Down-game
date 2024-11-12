@@ -30,7 +30,7 @@ func _input(event: InputEvent) -> void:
 
 
 func add_item(item: InventoryItem, stacks: int):
-	print_debug(item.name)
+	#print_debug(item.name)
 	if stacks && item.max_stacks > 1:
 		add_stackable_item_to_inventory(item, stacks)
 	else:
@@ -42,6 +42,7 @@ func add_item(item: InventoryItem, stacks: int):
 			items.append(item)
 		inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
+	GameData.player_inventory = items.duplicate()
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 	
@@ -133,23 +134,3 @@ func eject_item_into_the_ground(idx: int):
 		
 	items[idx] = null
 	
-#func on_spell_slot_clicked(idx: int):
-	#selected_spell_index = idx
-	#inventory_ui.set_selected_spell_slot(selected_spell_index)
-	#spell_activated.emit(selected_spell_index)
-#
-#func check_magic_ui_visibility():
-	#var should_show_magic_ui = (combat_system.left_weapon != null and \
-	#combat_system.left_weapon.attack_type == "Magic") or \
-	#(combat_system.right_weapon != null and \
-	#combat_system.right_weapon.attack_type == "Magic")
-	#inventory_ui.toggle_spells_ui(should_show_magic_ui)
-	#if should_show_magic_ui == false:
-		#on_screen_ui.toggle_spell_slot(false, null)
-	#
-	#
-	#
-	#
-	#
-	#
-	#

@@ -4208,6 +4208,7 @@ position = Vector2(473, 81)
 [node name="PickUpItem" parent="TileMapObjects" instance=ExtResource("12_jd0kk")]
 position = Vector2(409, 212)
 inventory_item = ExtResource("13_0l4nc")
+stacks = 10
 
 [node name="TileMapWhall2" type="TileMapLayer" parent="."]
 position = Vector2(0, -1)

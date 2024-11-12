@@ -6,6 +6,7 @@ class_name Player
 @onready var attak_collision: CollisionShape2D = $"Area2D/AttakCollision"
 @onready var inventory: Inventory = $Inventory
 @onready var inventory_ui: InventoryUI = $InventroryUI
+@onready var items 
 
 @export var hand_weapon: InventoryItem
 
@@ -33,6 +34,11 @@ func _ready() -> void:
 	animated_sprite_2d.mining_animation_finished.connect(on_mining_animation_finished)
 	
 	health_system.health_changed.emit()
+	
+	if GameData.player_inventory.size() > 0:
+		inventory.items = GameData.player_inventory.duplicate()
+		for item in inventory.items:
+			inventory_ui.add_item(item)  # Добавляем каждый предмет в интерфейс
 	
 
 
