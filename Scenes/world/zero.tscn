@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://beagrvbatwmpc"]
+[gd_scene load_steps=39 format=4 uid="uid://beagrvbatwmpc"]
 
 [ext_resource type="Texture2D" uid="uid://fax6ga3a1hnj" path="res://Assets/sprites/dungeon/Dungeon.png" id="1_tdju0"]
 [ext_resource type="Texture2D" uid="uid://dipcjxwfgh35j" path="res://Assets/sprites/dungeon/dungeon_temple/16x16/A2_16x16.png" id="2_2fj4h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dwar5nmiycv5x" path="res://Scenes/hatch.tscn" id="5_0ds2x"]
 [ext_resource type="Texture2D" uid="uid://rcpq764rm7dy" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/dungeontileset-extended.png" id="5_snw7b"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="6_258xr"]
+[ext_resource type="Texture2D" uid="uid://c8delt7gcgt20" path="res://Resources/AnimatedTexture/torch.tres" id="6_ii3h8"]
 [ext_resource type="Texture2D" uid="uid://pk7idky2nj3y" path="res://Assets/sprites/characters/Player/idle-Sheet.png" id="7_8pbwb"]
 [ext_resource type="Texture2D" uid="uid://d10u6gxtpqh8k" path="res://Assets/sprites/dungeon/Damp Dungeon Premium Package/Damp Dungeon Sprites.png" id="7_gup2x"]
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="11_r65xb"]
@@ -1292,6 +1293,11 @@ sources/2 = SubResource("TileSetAtlasSource_osifn")
 sources/5 = SubResource("TileSetAtlasSource_tvj30")
 sources/6 = SubResource("TileSetAtlasSource_yru1i")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu1un"]
+texture = ExtResource("6_ii3h8")
+0:0/animation_columns = 8
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7tvih"]
 texture = ExtResource("5_snw7b")
 1:0/0 = 0
@@ -2249,6 +2255,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/6 = SubResource("TileSetAtlasSource_7cbqm")
 sources/16 = SubResource("TileSetAtlasSource_7tvih")
+sources/0 = SubResource("TileSetAtlasSource_vu1un")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vnjxn"]
 texture = ExtResource("4_pfqd7")
@@ -3252,12 +3259,64 @@ texture = ExtResource("7_gup2x")
 5:9/0 = 0
 6:9/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ejv8"]
+texture = ExtResource("5_snw7b")
+8:22/animation_columns = 8
+8:22/animation_speed = 3.0
+8:22/animation_frame_0/duration = 1.0
+8:22/animation_frame_1/duration = 1.0
+8:22/animation_frame_2/duration = 1.0
+8:22/animation_frame_3/duration = 1.0
+8:22/animation_frame_4/duration = 1.0
+8:22/animation_frame_5/duration = 1.0
+8:22/animation_frame_6/duration = 1.0
+8:22/animation_frame_7/duration = 1.0
+8:22/0 = 0
+8:23/animation_columns = 8
+8:23/animation_frame_0/duration = 1.0
+8:23/animation_frame_1/duration = 1.0
+8:23/animation_frame_2/duration = 1.0
+8:23/animation_frame_3/duration = 1.0
+8:23/animation_frame_4/duration = 1.0
+8:23/animation_frame_5/duration = 1.0
+8:23/animation_frame_6/duration = 1.0
+8:23/animation_frame_7/duration = 1.0
+8:23/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5hgo"]
+texture = ExtResource("5_snw7b")
+8:26/animation_columns = 8
+8:26/animation_speed = 3.0
+8:26/animation_frame_0/duration = 1.0
+8:26/animation_frame_1/duration = 1.0
+8:26/animation_frame_2/duration = 1.0
+8:26/animation_frame_3/duration = 1.0
+8:26/animation_frame_4/duration = 1.0
+8:26/animation_frame_5/duration = 1.0
+8:26/animation_frame_6/duration = 1.0
+8:26/animation_frame_7/duration = 1.0
+8:26/0 = 0
+8:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -11.625, 3.0625, -11.625, 2.8125, 0.25, -2.8125, 0)
+8:25/animation_columns = 8
+8:25/animation_speed = 3.0
+8:25/animation_frame_0/duration = 1.0
+8:25/animation_frame_1/duration = 1.0
+8:25/animation_frame_2/duration = 1.0
+8:25/animation_frame_3/duration = 1.0
+8:25/animation_frame_4/duration = 1.0
+8:25/animation_frame_5/duration = 1.0
+8:25/animation_frame_6/duration = 1.0
+8:25/animation_frame_7/duration = 1.0
+8:25/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_sclqe"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_vnjxn")
 sources/3 = SubResource("TileSetAtlasSource_cdnps")
 sources/4 = SubResource("TileSetAtlasSource_x0b7q")
+sources/6 = SubResource("TileSetAtlasSource_6ejv8")
+sources/7 = SubResource("TileSetAtlasSource_y5hgo")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xd2e2"]
 atlas = ExtResource("7_8pbwb")
@@ -4176,7 +4235,7 @@ tile_set = SubResource("TileSet_hjb32")
 
 [node name="TileMapObjects" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAEAP//AAAAAAwAAAAEAAAAAAAAAA0AAAAFAP7/AAABAAsAAAAFAP//AAABAAwAAAAFAAAAAAABAA0AAAAGAP//AAACAAwAAAAGAAAAAAACAA0AAAAHAP7/AAAAAAgAAAAHAP//AAAAAAkAAAAHAAAAAAAAAAoAAAADAP7/AAAAAAgAAAADAP//AAAAAAkAAAADAAAAAAAAAAoAAAAFAAIAAAACAAgAAAADAAQAAAAEAAUAAAAEAAQAAAAFAAUAAAABAAQAAAAEAAUAAAACAAQAAAAFAAUAAAABAAYAAAAEAAUAAAACAAYAAAAFAAUAAAADAAYAAAAEAAUAAAAEAAYAAAAFAAUAAAAGAAQAAAAEAAUAAAAHAAQAAAAFAAUAAAAIAAQAAAAEAAUAAAAJAAQAAAAFAAUAAAAIAAYAAAAEAAUAAAAJAAYAAAAFAAUAAAAGAAYAAAAEAAUAAAAHAAYAAAAFAAUAAAABAP//AAADAAoAAAAfAAEAAAADAAwAAAAfAAIAAAADAA0AAAAgAAAAAAAEAAsAAAAgAAEAAAAEAAwAAAAgAAIAAAAEAA0AAAAhAAEAAAAFAAwAAAAhAAIAAAAFAA0AAAAeAAAAAwAIABYAAAAeAAEAAwAIABcAAAAiAAAAAwAIABYAAAAiAAEAAwAIABcAAAAVAAQAAAAEAAQAAAAWAAQAAAAFAAQAAAAXAAQAAAAEAAQAAAAYAAQAAAAFAAQAAAAZAAQAAAAEAAQAAAAaAAQAAAAFAAQAAAAmABAAAAAEAAQAAAAnABAAAAAFAAQAAAAoABAAAAAEAAQAAAApABAAAAAFAAQAAAAqABAABAADAAAAAAArABAABAAEAAAAAAAqAA8ABAAGAAAAAAAqAA4ABAAJAAAAAAApAA8ABAAFAAAAAAApAA0ABAADAAAAAAAqAA0ABAADAAEAAAAoAAwABAAFAAAAAAApAAwABAAJAAAAAAAqAAwABAAAAAEAAAArABYABAAAAAEAAAArABcABAAAAAEAAAArABgABAAAAAEAAAArABkABAAAAAEAAAArABoABAAAAAEAAAArABUABAAAAAEAAAAqABUABAAAAAEAAAAqABYABAAAAAEAAAAqABcABAAAAAEAAAAqABgABAAAAAEAAAAqABkABAAAAAEAAAAqABoABAAAAAEAAAARAAcAAwAIABkAAAARAAgAAwAIABoAAAAPAAsAAwAIABkAAAAPAAwAAwAIABoAAAASAAgAAAAFAAEAAAASAAkAAAAFAAIAAAAQAAsAAAAFAAEAAAAQAAwAAAAFAAIAAAAQAA0AAwAIABkAAAAQAA4AAwAIABoAAAATAAcAAwAIABkAAAATAAgAAwAIABoAAAASABcAAAAEAAQAAAATABcAAAAFAAQAAAASABgAAAAEAAQAAAATABgAAAAFAAQAAAAPABQABAADAAAAAAAPABUABAADAAAAAAAPABYABAADAAAAAAAPABcABAADAAAAAAASAAYABAADAAEAAAATAAYABAAEAAEAAAARAA0ABAAFAAEAAAA=")
+tile_map_data = PackedByteArray("AAAEAP//AAAAAAwAAAAEAAAAAAAAAA0AAAAFAP7/AAABAAsAAAAFAP//AAABAAwAAAAFAAAAAAABAA0AAAAGAP//AAACAAwAAAAGAAAAAAACAA0AAAAHAP7/AAAAAAgAAAAHAP//AAAAAAkAAAAHAAAAAAAAAAoAAAADAP7/AAAAAAgAAAADAP//AAAAAAkAAAADAAAAAAAAAAoAAAAFAAIAAAACAAgAAAADAAQAAAAEAAUAAAAEAAQAAAAFAAUAAAABAAQAAAAEAAUAAAACAAQAAAAFAAUAAAABAAYAAAAEAAUAAAACAAYAAAAFAAUAAAADAAYAAAAEAAUAAAAEAAYAAAAFAAUAAAAGAAQAAAAEAAUAAAAHAAQAAAAFAAUAAAAIAAQAAAAEAAUAAAAJAAQAAAAFAAUAAAAIAAYAAAAEAAUAAAAJAAYAAAAFAAUAAAAGAAYAAAAEAAUAAAAHAAYAAAAFAAUAAAABAP//AAADAAoAAAAfAAEAAAADAAwAAAAfAAIAAAADAA0AAAAgAAAAAAAEAAsAAAAgAAEAAAAEAAwAAAAgAAIAAAAEAA0AAAAhAAEAAAAFAAwAAAAhAAIAAAAFAA0AAAAVAAQAAAAEAAQAAAAWAAQAAAAFAAQAAAAXAAQAAAAEAAQAAAAYAAQAAAAFAAQAAAAZAAQAAAAEAAQAAAAaAAQAAAAFAAQAAAAmABAAAAAEAAQAAAAnABAAAAAFAAQAAAAoABAAAAAEAAQAAAApABAAAAAFAAQAAAAqABAABAADAAAAAAArABAABAAEAAAAAAAqAA8ABAAGAAAAAAAqAA4ABAAJAAAAAAApAA8ABAAFAAAAAAApAA0ABAADAAAAAAAqAA0ABAADAAEAAAAoAAwABAAFAAAAAAApAAwABAAJAAAAAAAqAAwABAAAAAEAAAArABYABAAAAAEAAAArABcABAAAAAEAAAArABgABAAAAAEAAAArABkABAAAAAEAAAArABoABAAAAAEAAAArABUABAAAAAEAAAAqABUABAAAAAEAAAAqABYABAAAAAEAAAAqABcABAAAAAEAAAAqABgABAAAAAEAAAAqABkABAAAAAEAAAAqABoABAAAAAEAAAASAAgAAAAFAAEAAAASAAkAAAAFAAIAAAAQAAsAAAAFAAEAAAAQAAwAAAAFAAIAAAASABcAAAAEAAQAAAATABcAAAAFAAQAAAASABgAAAAEAAQAAAATABgAAAAFAAQAAAAPABQABAADAAAAAAAPABUABAADAAAAAAAPABYABAADAAAAAAAPABcABAADAAAAAAASAAYABAADAAEAAAATAAYABAAEAAEAAAARAA0ABAAFAAEAAAAeAAAABgAIABYAAAAeAAEABgAIABcAAAAiAAAABgAIABYAAAAiAAEABgAIABcAAAASAAwABwAIABkAAAASAA0ABwAIABoAAAA=")
 tile_set = SubResource("TileSet_sclqe")
 
 [node name="NPC" parent="TileMapObjects" instance=ExtResource("6_258xr")]
@@ -4203,7 +4262,7 @@ sprites = SubResource("SpriteFrames_komqm")
 position = Vector2(429, 121)
 
 [node name="Player" parent="TileMapObjects" instance=ExtResource("3_kw2mv")]
-position = Vector2(473, 81)
+position = Vector2(316, 181)
 
 [node name="PickUpItem" parent="TileMapObjects" instance=ExtResource("12_jd0kk")]
 position = Vector2(409, 212)

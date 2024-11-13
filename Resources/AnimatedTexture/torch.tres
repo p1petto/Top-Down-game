@@ -1,0 +1,29 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://c8delt7gcgt20"]
+
+[ext_resource type="Texture2D" uid="uid://css4mm01vl2lo" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-1.png" id="1_bryha"]
+[ext_resource type="Texture2D" uid="uid://u2qwr0hicrpo" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-2.png" id="2_msa6s"]
+[ext_resource type="Texture2D" uid="uid://bsb0kj0bid8ty" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-3.png" id="3_uaxh2"]
+[ext_resource type="Texture2D" uid="uid://cjluijgwcq363" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-4.png" id="4_53uvf"]
+[ext_resource type="Texture2D" uid="uid://co3xhpkn8xyef" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-5.png" id="5_w3ts2"]
+[ext_resource type="Texture2D" uid="uid://3i6ogb74noff" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-6.png" id="6_nh2md"]
+[ext_resource type="Texture2D" uid="uid://cwpis0ck6cv8k" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-7.png" id="7_twpli"]
+[ext_resource type="Texture2D" uid="uid://bs3yeksyo2ukp" path="res://Assets/sprites/dungeon/dungeontiles-extended v1.1/torch/Sprite-0002-8.png" id="8_2gg43"]
+
+[resource]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("1_bryha")
+frame_1/texture = ExtResource("2_msa6s")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_uaxh2")
+frame_2/duration = 0.0
+frame_3/texture = ExtResource("4_53uvf")
+frame_3/duration = 0.0
+frame_4/texture = ExtResource("5_w3ts2")
+frame_4/duration = 0.0
+frame_5/texture = ExtResource("6_nh2md")
+frame_5/duration = 0.0
+frame_6/texture = ExtResource("7_twpli")
+frame_6/duration = 0.0
+frame_7/texture = ExtResource("8_2gg43")
+frame_7/duration = 0.0
