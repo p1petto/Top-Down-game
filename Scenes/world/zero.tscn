@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://beagrvbatwmpc"]
+[gd_scene load_steps=41 format=4 uid="uid://beagrvbatwmpc"]
 
 [ext_resource type="Texture2D" uid="uid://fax6ga3a1hnj" path="res://Assets/sprites/dungeon/Dungeon.png" id="1_tdju0"]
 [ext_resource type="Texture2D" uid="uid://dipcjxwfgh35j" path="res://Assets/sprites/dungeon/dungeon_temple/16x16/A2_16x16.png" id="2_2fj4h"]
@@ -13,8 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://d10u6gxtpqh8k" path="res://Assets/sprites/dungeon/Damp Dungeon Premium Package/Damp Dungeon Sprites.png" id="7_gup2x"]
 [ext_resource type="Resource" uid="uid://b125gsah2k7y1" path="res://Resources/Dialogues/Test/dialogue.dialogue" id="11_pmbge"]
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="11_r65xb"]
+[ext_resource type="Resource" uid="uid://clvwx56oa3mby" path="res://Resources/Dialogues/npc_hello.dialogue" id="11_u8hlr"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="12_bvlwu"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="12_jd0kk"]
 [ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/PickUpItem/GoldCoin/gold_coin.tres" id="13_0l4nc"]
+[ext_resource type="Resource" uid="uid://bcepdfnrx885a" path="res://Resources/PickUpItem/StonePickUpItem/stone_pick_up_item.tres" id="13_i0882"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vp46e"]
 texture = ExtResource("1_tdju0")
@@ -4235,7 +4238,8 @@ tile_set = SubResource("TileSet_sclqe")
 [node name="NPC" parent="TileMapObjects" instance=ExtResource("6_258xr")]
 position = Vector2(267, 170)
 sprites = SubResource("SpriteFrames_komqm")
-dialogue_resource = ExtResource("11_pmbge")
+dialogue_resource = ExtResource("11_u8hlr")
+items = Array[ExtResource("12_bvlwu")]([ExtResource("13_i0882")])
 
 [node name="NPC2" parent="TileMapObjects" instance=ExtResource("6_258xr")]
 position = Vector2(272, 362)

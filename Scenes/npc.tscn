@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctim4bqy7ji0n"]
+[gd_scene load_steps=11 format=3 uid="uid://ctim4bqy7ji0n"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_n65hq"]
 [ext_resource type="Texture2D" uid="uid://pk7idky2nj3y" path="res://Assets/sprites/characters/Player/idle-Sheet.png" id="2_olkbd"]
+[ext_resource type="Script" path="res://Scripts/market.gd" id="3_s722d"]
+[ext_resource type="PackedScene" uid="uid://c8o2clkap36hb" path="res://Scenes/UI/market_ui.tscn" id="4_ghcwk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0bla"]
 radius = 34.0
@@ -68,6 +70,12 @@ collision_mask = 2
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_f0bla")
+
+[node name="Market" type="Node" parent="."]
+script = ExtResource("3_s722d")
+
+[node name="MarketUI" parent="." instance=ExtResource("4_ghcwk")]
+visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
