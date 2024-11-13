@@ -6,9 +6,12 @@
 
 [node name="Hatch" type="Area2D"]
 scale = Vector2(1.6, 1.6)
+collision_mask = 2
 script = ExtResource("1_d0oal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2nusw")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

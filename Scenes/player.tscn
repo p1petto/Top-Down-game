@@ -17,6 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="15_wkeua"]
 [ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="16_oqtiy"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8vsp"]
+texture = ExtResource("14_y2xsh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6uvu"]
+texture = ExtResource("15_wkeua")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nmsa"]
 atlas = ExtResource("3_ka05o")
 region = Rect2(0, 0, 64, 64)
@@ -531,17 +537,33 @@ animations = [{
 radius = 13.0
 height = 28.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8vsp"]
-texture = ExtResource("14_y2xsh")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6uvu"]
-texture = ExtResource("15_wkeua")
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_urfjx")
 
 [node name="OnScreenUI" parent="." instance=ExtResource("9_qc5g0")]
+
+[node name="MarginContainer2" type="MarginContainer" parent="OnScreenUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -379.0
+offset_bottom = 59.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="OnScreenUI/MarginContainer2"]
+z_index = 100
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxTexture_k8vsp")
+theme_override_styles/fill = SubResource("StyleBoxTexture_t6uvu")
+value = 50.0
+script = ExtResource("16_oqtiy")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -574,6 +596,7 @@ position = Vector2(-2, -11)
 zoom = Vector2(3, 3)
 
 [node name="HealthSystem" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_qk3vs")
 
 [node name="AreaPickUp" type="Area2D" parent="."]
@@ -590,19 +613,6 @@ visible = false
 [node name="Inventory" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("8_3l3ao")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-z_index = 100
-texture_filter = 1
-offset_left = 49.0
-offset_top = -112.0
-offset_right = 175.0
-offset_bottom = -100.0
-theme_override_font_sizes/font_size = 8
-theme_override_styles/background = SubResource("StyleBoxTexture_k8vsp")
-theme_override_styles/fill = SubResource("StyleBoxTexture_t6uvu")
-value = 50.0
-script = ExtResource("16_oqtiy")
 
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

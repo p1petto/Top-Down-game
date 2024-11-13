@@ -7,7 +7,7 @@ var can_interact = false
 var is_dialogue_active = false
 
 func _input(event):
-	if event.is_action_pressed("ui_accept") and can_interact and dialogue_resource and not is_dialogue_active:
+	if event.is_action_pressed("interact") and can_interact and dialogue_resource and not is_dialogue_active:
 		start_dialogue()
 
 func start_dialogue():

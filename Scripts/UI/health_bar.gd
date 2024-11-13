@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@onready var health_system: HealthSystem = $"../HealthSystem"
+@onready var health_system: HealthSystem = %HealthSystem
 
 func _ready() -> void:
 	await get_tree().process_frame
