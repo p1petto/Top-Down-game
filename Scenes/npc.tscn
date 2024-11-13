@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://pk7idky2nj3y" path="res://Assets/sprites/characters/Player/idle-Sheet.png" id="2_olkbd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0bla"]
-radius = 12.0
-height = 32.0
+radius = 34.0
+height = 68.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyraw"]
 atlas = ExtResource("2_olkbd")

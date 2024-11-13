@@ -1,25 +1,26 @@
 extends CharacterBody2D
 
-var player_is_near = false
-@onready var dialogue_system: Dialogue_system = $"../../UI/Dialogue"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 @export var sprites: SpriteFrames
+@export var dialogue_resource: DialogueResource
+var can_interact = false
+var is_dialogue_active = false
 
-func _ready() -> void:
-	if sprites:
-		animated_sprite.sprite_frames = sprites
-		animated_sprite.play("default")
+func _input(event):
+	if event.is_action_pressed("ui_accept") and can_interact and dialogue_resource and not is_dialogue_active:
+		start_dialogue()
+
+func start_dialogue():
+	is_dialogue_active = true
+	DialogueManager.show_dialogue_balloon(dialogue_resource, "this_is_a_node_title")
+
+func _on_dialogue_finished():
+	is_dialogue_active = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
-		player_is_near = true
+		can_interact = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == 'Player':
-		player_is_near = false
-		
-func _input(event):
-	if player_is_near:
-		if event.is_action_pressed("ui_accept"):
-			dialogue_system.start("res://Dialogues/test_chat.json")
+		can_interact = false

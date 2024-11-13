@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=17 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
 [ext_resource type="Texture2D" uid="uid://1jcjiwddsl6t" path="res://Assets/sprites/tilesets/fences.png" id="2_20l8x"]
 [ext_resource type="PackedScene" uid="uid://4bavjct0xboj" path="res://Scenes/enemy.tscn" id="2_l0fdp"]
-[ext_resource type="PackedScene" uid="uid://dirhm7slqbj5g" path="res://Scenes/UI/dialogue.tscn" id="6_5xwwq"]
 [ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
 [ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
@@ -202,8 +201,7 @@ stacks = 10
 dropped_resource = ExtResource("12_dp8j4")
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Dialogue" parent="UI" instance=ExtResource("6_5xwwq")]
+visible = false
 
 [node name="Inventory" parent="UI" instance=ExtResource("10_dro7y")]
 visible = false
