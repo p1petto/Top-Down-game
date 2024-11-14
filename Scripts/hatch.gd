@@ -1,7 +1,7 @@
 extends Area2D
 
 # Укажите путь к сцене, на которую нужно перейти
-@export var next_scene: String = "res://Scenes/main.tscn"
+@export var next_scene: String 
 @export var transition_duration: float = 0.5
 
 var can_interact = false
