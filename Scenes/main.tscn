@@ -195,7 +195,7 @@ position = Vector2(-154, -9)
 inventory_item = ExtResource("14_6s6jg")
 
 [node name="ResourceItem" parent="TileMap" groups=["UsefullResources"] instance=ExtResource("10_wsxvo")]
-position = Vector2(-178, 0)
+position = Vector2(-193, -7)
 useful_resource = ExtResource("11_ulk1a")
 stacks = 10
 dropped_resource = ExtResource("12_dp8j4")
