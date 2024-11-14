@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://clvwx56oa3mby"
+path="res://.godot/imported/buy_stone.dialogue-7988e39443eb29cc04af7b64fe8ca195.tres"
+
+[deps]
+
+source_file="res://Resources/Dialogues/buy_stone.dialogue"
+dest_files=["res://.godot/imported/buy_stone.dialogue-7988e39443eb29cc04af7b64fe8ca195.tres"]
+
+[params]
+
+defaults=true

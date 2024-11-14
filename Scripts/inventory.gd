@@ -22,10 +22,14 @@ func _ready() -> void:
 	inventory_ui.equip_item.connect(on_item_equipped)
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	#inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
+	if len(items) > 0:
+		for item in items:
+			inventory_ui.add_item(item)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_ui.toggle()
+	
 		
 
 
@@ -90,6 +94,7 @@ func on_item_equipped(idx: int, slot_to_equip: String):
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
 	#player.hand_weapon = item
 	player.set_active_weapon(items[idx], slot_to_equip)
+	GameData.player_stats.hand_weapon = item_to_equip
 
 
 func on_item_dropped(idx: int):

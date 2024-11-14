@@ -9,7 +9,7 @@ var items: Array[InventoryItem] = []
 var taken_inventory_slots_count = 0
 #
 func _ready() -> void:
-	pass
+	market_ui.move_item_to_player.connect(on_item_buyed)
 
 
 func add_item(item: InventoryItem, stacks: int):
@@ -72,6 +72,9 @@ func on_item_equipped(idx: int, slot_to_equip: String):
 
 
 func on_item_dropped(idx: int):
+	clear_inventory_slot(idx)
+	
+func on_item_buyed(idx: int):
 	clear_inventory_slot(idx)
 	
 

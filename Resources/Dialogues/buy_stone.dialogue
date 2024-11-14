@@ -1,0 +1,8 @@
+~ start
+Nathan: [[Привет|Приветствую]]
+#Nathan: Не желаешь закупиться камнем?
+#- Купить камень
+#	Nathan: юю [do item_sale.emit("res://Resources/PickUpItem/StonePickUpItem/stone_pick_up_item.tres")]
+#	
+#- Отмена => END
+=> END

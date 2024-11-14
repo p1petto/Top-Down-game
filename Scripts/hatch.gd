@@ -15,23 +15,19 @@ func _input(event):
 		transition_to_scene()
 
 func transition_to_scene() -> void:
-	# Создаем анимацию затемнения
 	var transition = ColorRect.new()
-	transition.color = Color(0, 0, 0, 0)  # Начинаем с прозрачного
+	transition.color = Color(0, 0, 0, 0)  
 	transition.set_anchors_preset(Control.PRESET_FULL_RECT)
 	transition.position = Vector2(0, -200)
 	get_tree().root.add_child(transition)
 	
-	# Создаем tween для плавного перехода
 	var tween = create_tween()
 	tween.tween_property(transition, "color:a", 1.0, transition_duration)
 	await tween.finished
-	
-	# Меняем сцену
+	transition.queue_free()
 	get_tree().change_scene_to_file(next_scene)
 	
-	# Удаляем transition
-	transition.queue_free()
+	
 
 
 func _on_body_entered(body: Node2D) -> void:
