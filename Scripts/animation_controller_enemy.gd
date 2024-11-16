@@ -51,9 +51,14 @@ func play_movement_animation(direction: Vector2):
 
 func play_idle_animation():
 	var animation = current_animation
+	
 	if MOVEMENT_TO_IDLE.keys().has(animation):
 		play(MOVEMENT_TO_IDLE[animation])
+	else:
+		play("idle_down")
+	
 		
 func play_damaged_animation():
+	print(current_animation)
 	if TO_DAMAGE.keys().has(current_animation):
 		play(TO_DAMAGE[current_animation])

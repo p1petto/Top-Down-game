@@ -113,6 +113,7 @@ func handle_damaged_state(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
+		print ("bo")
 		body.health_system_enemy.apply_damage(hand_weapon.damage)
 		knockback_direction = (body.global_position - global_position) * GameData.player_stats.knockback_power
 		body.knockback(knockback_direction)

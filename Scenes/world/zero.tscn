@@ -4258,8 +4258,9 @@ sprites = SubResource("SpriteFrames_komqm")
 position = Vector2(650, 386)
 sprites = SubResource("SpriteFrames_komqm")
 
-[node name="Enemy" parent="TileMapObjects" instance=ExtResource("11_r65xb")]
+[node name="Enemy" parent="TileMapObjects" groups=["Enemies"] instance=ExtResource("11_r65xb")]
 position = Vector2(429, 121)
+max_health = 30
 
 [node name="Player" parent="TileMapObjects" instance=ExtResource("3_kw2mv")]
 unique_name_in_owner = true

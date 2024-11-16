@@ -22,7 +22,9 @@ var wait_timer := 0.0
 var last_animation = null
 
 enum State { PATROL, DAMAGED, IDLE }
-var current_state = State.PATROL
+var current_state : State = State.IDLE : 
+	set(new_state):
+		current_state = new_state
 var acc = null
 
 	
@@ -31,24 +33,28 @@ func _ready() -> void:
 	health_system_enemy.died.connect(on_dead)
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
+		current_state = State.PATROL
 	acc = 0.05
 	
 
 
 
 func _physics_process(delta: float) -> void:
+	
 	match current_state:
 		State.PATROL:
-			if patrol_path.size() > 1:
-				move_along_path(delta)
+			move_along_path(delta)
 		State.DAMAGED:
 			animated_sprite_2d.play_damaged_animation()
 			move_and_slide()
 			velocity = velocity - velocity * acc 
 			#print (velocity)
-			if abs(velocity - Vector2(0, 0)) <= Vector2(0.3, 0.3):
-				current_state = State.PATROL
-				#print (velocity)
+			#if abs(velocity - Vector2(0, 0)) <= Vector2(0.3, 0.3):
+				#if patrol_path.size() > 0:
+					#current_state = State.PATROL
+				#else:
+					#current_state = State.IDLE
+				##print (velocity)
 				
 		State.IDLE:
 			animated_sprite_2d.play_idle_animation()
@@ -72,6 +78,7 @@ func move_along_path(delta: float):
 			current_patrol_target = (current_patrol_target + 1) % patrol_path.size()
 
 func knockback(dir):
+	print ("knockback")
 	velocity = dir.normalized() * speed
 	current_state = State.DAMAGED
 
@@ -100,6 +107,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "died":
 		queue_free()
 		pass
+	if anim_name.contains("damaged"):
+		if patrol_path.size() > 0:
+			current_state = State.PATROL
+		else:
+			current_state = State.IDLE
 		
 func eject_item_into_the_ground():
 	if dropped_resource == null:
