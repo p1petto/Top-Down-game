@@ -3,6 +3,7 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimationController = $Sprite2D
 @onready var health_system: HealthSystem = $HealthSystem
+@onready var hunger_system: HungerSystem = $HungerSystem
 @onready var attak_collision: CollisionShape2D = $"Area2D/AttakCollision"
 @onready var inventory: Inventory = $Inventory
 @onready var inventory_ui: InventoryUI = $InventroryUI
@@ -32,11 +33,17 @@ func _ready() -> void:
 	
 	health_system.died.connect(on_player_dead)
 	health_system.damage_taken.connect(on_player_damage)
+	health_system.health_changed.emit()
+	
 	animated_sprite_2d.damage_animation_finished.connect(on_damage_animation_finished)
 	animated_sprite_2d.attack_animation_finished.connect(on_attack_animation_finished)
 	animated_sprite_2d.mining_animation_finished.connect(on_mining_animation_finished)
 	
-	health_system.health_changed.emit()
+	hunger_system.init(GameData.player_stats.max_satiety)
+	hunger_system.current_satiety = GameData.player_stats.current_satiety
+	
+	hunger_system.hunger_die.connect(on_player_dead)
+	
 	
 	if GameData.player_inventory.size() > 0:
 		inventory.items = GameData.player_inventory.duplicate()

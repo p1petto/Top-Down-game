@@ -51,7 +51,7 @@ func add_item(item: InventoryItem):
 		var equip_slot_name_array = item.slot_type.to_lower().split("_")
 		var equip_slot_name = " ".join(equip_slot_name_array)
 		slot_to_equip = item.slot_type
-		popup_menu.set_item_text(0, "Equip to " + equip_slot_name)
+		popup_menu.set_item_text(0, "Надеть")
 		
 	
 	is_empty = false

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://tsx33bjeqt60"]
+
+[ext_resource type="Shape2D" uid="uid://dt6ypm2quj47m" path="res://Resources/PickUpItem/GoldCoin/gold_coin_collision_shape.tres" id="1_0difm"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="2_hjwqb"]
+[ext_resource type="Texture2D" uid="uid://dcg606u67cnu0" path="res://Assets/sprites/Items/Food/Ribs.png" id="3_nq5ok"]
+
+[resource]
+script = ExtResource("2_hjwqb")
+slot_type = "NotEquipable"
+tool_type = "NoType"
+ground_collision_shape = ExtResource("1_0difm")
+name = "Мясо гоблина"
+texture = ExtResource("3_nq5ok")
+max_stacks = 30
+price = 15
+food = true
+damage = 0

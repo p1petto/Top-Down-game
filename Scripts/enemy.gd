@@ -6,7 +6,7 @@ class_name Enemy
 
 @export var enemy_data: EnemyType
 
-@export var dropped_resource: InventoryItem 
+@export var dropped_resource: Array[InventoryItem] = [] 
 
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
@@ -43,7 +43,7 @@ func _ready() -> void:
 	chase_distance = enemy_data.chase_distance
 	
 	health_system_enemy.init(max_health)
-	health_system_enemy.died.connect(on_dead)
+	#health_system_enemy.died.connect(on_dead)
 	if patrol_path.size() > 0:
 		position = patrol_path[0].position
 		current_state = State.PATROL
@@ -120,22 +120,25 @@ func on_dead():
 	collision_shape_2d.set_deferred("disabled", true)
 	area_collision_shape_2d.set_deferred("disabled", true)
 	eject_item_into_the_ground() 		
+	print("dead enemy")
 		
 func eject_item_into_the_ground():
-	if dropped_resource == null:
+	if dropped_resource.is_empty():
 		return
 	
-	var item_to_eject_as_pickup = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
-	item_to_eject_as_pickup.inventory_item = dropped_resource
-	item_to_eject_as_pickup.stacks = randi_range(1, 5)
-
-	get_tree().root.call_deferred("add_child", item_to_eject_as_pickup)
-
-	item_to_eject_as_pickup.call_deferred("disable_collision")  
-
-	item_to_eject_as_pickup.global_position = global_position
-
-	item_to_eject_as_pickup.call_deferred("enable_collision")
+	for item in dropped_resource:
+		var item_to_eject_as_pickup = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
+		item_to_eject_as_pickup.inventory_item = item
+   	#item_to_eject_as_pickup.stacks = randi_range(1, 5)
+	
+		get_tree().root.call_deferred("add_child", item_to_eject_as_pickup)
+		item_to_eject_as_pickup.call_deferred("disable_collision")
+		
+		var random_offset = Vector2(
+			randf_range(-20, 20),
+			randf_range(-20, 20))
+		item_to_eject_as_pickup.global_position = global_position + random_offset
+		item_to_eject_as_pickup.call_deferred("enable_collision")
 
 
 func _on_aggro_area_body_entered(body: Node2D) -> void:

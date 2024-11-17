@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmp0f4064a264"]
+[gd_scene load_steps=20 format=3 uid="uid://cmp0f4064a264"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_urfjx"]
 [ext_resource type="Script" path="res://Scripts/animation_controller.gd" id="3_hf18r"]
 [ext_resource type="Shape2D" uid="uid://dmfwm70i2xkjt" path="res://Resources/Player/player_collision_shape.tres" id="4_0cbvg"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="4_qk3vs"]
+[ext_resource type="Script" path="res://Scripts/hunger_bar.gd" id="6_8lhaw"]
 [ext_resource type="SpriteFrames" uid="uid://dj4e31jkbac81" path="res://Resources/Player/player_sprite_frames.tres" id="6_kv8ls"]
 [ext_resource type="PackedScene" uid="uid://dcl7imohtnsbj" path="res://Scenes/UI/inventrory_ui.tscn" id="7_64pfr"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="8_3l3ao"]
 [ext_resource type="PackedScene" uid="uid://btfhto224r8q8" path="res://Scenes/UI/on_screen_ui.tscn" id="9_qc5g0"]
 [ext_resource type="Texture2D" uid="uid://rpgve2lagmcp" path="res://Assets/sprites/UI/healthbarUnder.png" id="14_y2xsh"]
+[ext_resource type="Script" path="res://Scripts/hunger_system.gd" id="15_i0qm6"]
 [ext_resource type="Texture2D" uid="uid://b8dflqexqcp7k" path="res://Assets/sprites/UI/healthbarProgress.png" id="15_wkeua"]
 [ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="16_oqtiy"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="17_icrkd"]
@@ -36,13 +38,16 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -379.0
-offset_bottom = 59.0
+offset_bottom = 125.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 
-[node name="ProgressBar" type="ProgressBar" parent="OnScreenUI/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OnScreenUI/MarginContainer2"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="OnScreenUI/MarginContainer2/VBoxContainer"]
 z_index = 100
 texture_filter = 1
 layout_mode = 2
@@ -52,6 +57,17 @@ theme_override_styles/background = SubResource("StyleBoxTexture_k8vsp")
 theme_override_styles/fill = SubResource("StyleBoxTexture_t6uvu")
 value = 50.0
 script = ExtResource("16_oqtiy")
+
+[node name="HungerBar" type="ProgressBar" parent="OnScreenUI/MarginContainer2/VBoxContainer"]
+z_index = 100
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxTexture_k8vsp")
+theme_override_styles/fill = SubResource("StyleBoxTexture_t6uvu")
+value = 50.0
+script = ExtResource("6_8lhaw")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -103,6 +119,14 @@ process_mode = 3
 script = ExtResource("8_3l3ao")
 items = Array[ExtResource("17_icrkd")]([ExtResource("18_bxp3x"), ExtResource("19_s54lb")])
 
+[node name="HungerSystem" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_i0qm6")
+
+[node name="Timer" type="Timer" parent="HungerSystem"]
+autostart = true
+
 [connection signal="animation_finished" from="Sprite2D" to="Sprite2D" method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="AreaPickUp" to="." method="_on_area_pick_up_area_entered"]
+[connection signal="timeout" from="HungerSystem/Timer" to="HungerSystem" method="_on_timer_timeout"]

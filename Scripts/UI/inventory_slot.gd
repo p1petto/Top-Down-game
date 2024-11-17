@@ -39,31 +39,46 @@ func _ready() -> void:
 	popup_menu.id_pressed.connect(on_popup_menu_item_pressed)
 
 func on_popup_menu_item_pressed(id: int):
-	var pressed_menu_item = menu_button.get_popup().get_item_text(id)
+	var popup_menu = menu_button.get_popup()
+	if id < 0 or id >= popup_menu.get_item_count():
+		print("Invalid menu item index:", id)
+		return
 	
-	if pressed_menu_item == "Drop":
+	var pressed_menu_item = popup_menu.get_item_text(id)
+	
+	if pressed_menu_item.contains("Выбросить"):
+		print("Выброс")
 		drop_item.emit()
 		menu_button.disabled = true	
-	elif pressed_menu_item.contains("Equip") && slot_to_equip != "NotEquipable":
+	elif pressed_menu_item.contains("Надеть") and slot_to_equip != "NotEquipable":
 		equip_item.emit(slot_to_equip)
+
 		
 
 func add_item(item: InventoryItem): 
+	var popup_menu: PopupMenu = menu_button.get_popup()
+	
+	popup_menu.clear()
+	
 	if item.slot_type != "NotEquipable":
-		var popup_menu: PopupMenu = menu_button.get_popup() 
-		var equip_slot_name_array = item.slot_type.to_lower().split("_")
-		var equip_slot_name = " ".join(equip_slot_name_array)
 		slot_to_equip = item.slot_type
-		popup_menu.set_item_text(0, "Equip to " + equip_slot_name)
-		
+		popup_menu.add_item("Надеть", 0)  
+		popup_menu.add_item("Выбросить", 1)
+	else:
+		if item.food:
+			popup_menu.add_item("Выбросить", 0)  
+			popup_menu.add_item("Съесть", 1)  
+		else:
+			popup_menu.add_item("Выбросить", 0)  
 	
 	is_empty = false
 	menu_button.disabled = false
 	texture_rect.texture = item.texture
 	name_label.text = item.name
-	if item.stacks < 2:
-		return
-	stacks_label.text = str(item.stacks)
+	
+	if item.stacks > 1:
+		stacks_label.text = str(item.stacks)
+
 		
 		
 #func _on_on_click_button_pressed() -> void:
