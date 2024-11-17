@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4bavjct0xboj"]
+[gd_scene load_steps=20 format=3 uid="uid://4bavjct0xboj"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y4g5m"]
 [ext_resource type="Texture2D" uid="uid://mt8q8d6pa3m3" path="res://Assets/sprites/characters/slime.png" id="2_jfwv5"]
@@ -519,6 +519,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_a100q"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxsj1"]
+radius = 111.0
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 0
@@ -555,5 +558,13 @@ debug_color = Color(0.97717, 0, 0.406207, 0.42)
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("4_cmbyi")
 
+[node name="AggroArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_dxsj1")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]

@@ -6,6 +6,7 @@ class_name Enemy
 @export var speed: float = 100
 @export var patrol_wait_time = 1.0
 @export var max_health = 10
+@export var chase_distance: float = 200.0
 
 @export var dropped_resource: InventoryItem 
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
@@ -21,11 +22,13 @@ var current_patrol_target: int = 0
 var wait_timer := 0.0
 var last_animation = null
 
-enum State { PATROL, DAMAGED, IDLE }
+enum State { PATROL, DAMAGED, IDLE, CHASE }
 var current_state : State = State.IDLE : 
 	set(new_state):
 		current_state = new_state
 var acc = null
+
+var player: Player
 
 	
 func _ready() -> void:
@@ -58,7 +61,22 @@ func _physics_process(delta: float) -> void:
 				
 		State.IDLE:
 			animated_sprite_2d.play_idle_animation()
+		
+		State.CHASE:
+			chase_player()
 
+func chase_player():
+	var distance_to_player = global_position.distance_to(player.global_position)
+	
+	if distance_to_player > chase_distance:
+		if patrol_path.size() > 0:
+			current_state = State.PATROL
+		else:
+			current_state = State.IDLE
+	var direction = (player.global_position - global_position).normalized()
+	animated_sprite_2d.play_movement_animation(direction)
+	velocity = direction * speed
+	move_and_slide()
 
 func move_along_path(delta: float):
 	var target_position = patrol_path[current_patrol_target].global_position
@@ -128,3 +146,9 @@ func eject_item_into_the_ground():
 	item_to_eject_as_pickup.global_position = global_position
 
 	item_to_eject_as_pickup.call_deferred("enable_collision")
+
+
+func _on_aggro_area_body_entered(body: Node2D) -> void:
+	if body.name == 'Player':
+		current_state = State.CHASE 
+		player = body
