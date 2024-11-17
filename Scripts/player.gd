@@ -18,6 +18,8 @@ enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE, MINING }
 var current_state : State = State.IDLE : 
 	set(new_state):
 		current_state = new_state
+		
+var current_delta: float = 0.0
 
 func _ready() -> void:
 	## Используем stats из синглтона
@@ -48,7 +50,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	current_delta = delta
 	match current_state:
 		State.IDLE:
 			handle_idle_state(delta)
@@ -116,7 +118,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print ("bo")
 		body.health_system_enemy.apply_damage(hand_weapon.damage)
 		knockback_direction = (body.global_position - global_position) * GameData.player_stats.knockback_power
-		body.knockback(knockback_direction)
+		body.knockback(knockback_direction, current_delta)
 	elif body.is_in_group("UsefullResources") and hand_weapon.tool_type == "Pickaxe":
 		body.apply_damage(hand_weapon.damage)
 
