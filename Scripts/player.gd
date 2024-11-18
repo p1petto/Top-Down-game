@@ -9,6 +9,8 @@ class_name Player
 @onready var inventory_ui: InventoryUI = $InventroryUI
 @onready var on_screen_ui: OnScreenUI = $OnScreenUI
 @onready var items 
+@onready var sound: SoundPlayer =  $AudioStreamPlayer
+
 
 @export var hand_weapon: InventoryItem
 
@@ -58,6 +60,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	current_delta = delta
+	#print (current_state)
 	match current_state:
 		State.IDLE:
 			handle_idle_state(delta)
@@ -71,11 +74,14 @@ func _physics_process(delta: float) -> void:
 		State.MINING:
 			handle_mining_state(delta)
 			
-		State.DIED:
-			handle_died_state()
-			
 		State.DAMAGED:
 			handle_damaged_state(delta)
+			
+		State.DIED:
+			print("DIED")
+			#handle_died_state()
+			
+		
 	
 	if direction and current_state != State.DAMAGED:
 		current_state = State.WALKING
@@ -109,9 +115,11 @@ func handle_mining_state(delta: float) -> void:
 	velocity = Vector2.ZERO
 
 func handle_died_state() -> void:
+	current_state = State.DIED
 	set_physics_process(false)
 	set_process_input(false)
 	animated_sprite_2d.play("died")
+	sound.play_death_sound()
 
 func handle_damaged_state(delta: float) -> void:
 	set_physics_process(false)
@@ -138,12 +146,15 @@ func _input(_event: InputEvent) -> void:
 				current_state = State.MINING
 
 func on_player_dead() -> void:
+	print ("on_player_dead")
 	current_state = State.DIED
-	GameData.player_stats.current_health = 0
+	#GameData.player_stats.current_health = 0
+	
 
 func on_player_damage() -> void:
 	current_state = State.DAMAGED
 	GameData.player_stats.current_health = health_system.current_health
+	sound.play_damage_sound()
 
 func on_attack_animation_finished() -> void:
 	reset_state()

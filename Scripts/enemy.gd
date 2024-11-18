@@ -77,18 +77,19 @@ func _physics_process(delta: float) -> void:
 			set_physics_process(false)
 
 func chase_player(delta):
-	
-	var distance_to_player = global_position.distance_to(player.global_position)
-	
-	if distance_to_player > chase_distance:
-		if patrol_path.size() > 0:
-			current_state = State.PATROL
-		else:
-			current_state = State.IDLE
-	var direction = (player.global_position - global_position).normalized()
-	animated_sprite_2d.play_movement_animation(direction)
-	velocity = direction * speed * delta
-	move_and_slide()
+	if player.current_state != player.State.DIED:
+		var distance_to_player = global_position.distance_to(player.global_position)
+		
+		if distance_to_player > chase_distance:
+			if patrol_path.size() > 0:
+				current_state = State.PATROL
+			else:
+				current_state = State.IDLE
+		var direction = (player.global_position - global_position).normalized()
+		animated_sprite_2d.play_movement_animation(direction)
+		velocity = direction * speed * delta
+		move_and_slide()
+	else: current_state = State.PATROL
 
 func move_along_path(delta: float):
 	var target_position = patrol_path[current_patrol_target].global_position
