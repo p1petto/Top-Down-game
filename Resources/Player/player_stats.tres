@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://cxon4sqes6mku"]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=5 format=3 uid="uid://cxon4sqes6mku"]
 
 [ext_resource type="Script" path="res://Scripts/player_stats.gd" id="1_ddk76"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="1_p8cof"]
+[ext_resource type="Resource" uid="uid://w4h143kvm1wj" path="res://Resources/Weapons/Pickaxe/pickaxe_inventory_item.tres" id="2_awwhr"]
+[ext_resource type="Resource" uid="uid://ch3olqyfjard4" path="res://Resources/Weapons/Sword/sword_inventory_item.tres" id="3_15oje"]
 
 [resource]
 script = ExtResource("1_ddk76")
-max_health = 100
-current_health = 100
+max_health = 10
+current_health = 5
+max_satiety = 100
+current_satiety = 100
 speed = 5000.0
 knockback_power = 100
+player_inventory = Array[ExtResource("1_p8cof")]([ExtResource("2_awwhr"), ExtResource("3_15oje")])

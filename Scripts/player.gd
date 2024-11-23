@@ -47,10 +47,10 @@ func _ready() -> void:
 	hunger_system.hunger_die.connect(on_player_dead)
 	
 	
-	if GameData.player_inventory.size() > 0:
-		inventory.items = GameData.player_inventory.duplicate()
-		for item in inventory.items:
-			inventory_ui.add_item(item) 
+	# if GameData.player_inventory.size() > 0:
+	# 	inventory.items = GameData.player_inventory.duplicate()
+	# 	for item in inventory.items:
+	# 		inventory_ui.add_item(item) 
 	if GameData.player_stats.hand_weapon:
 		set_active_weapon(GameData.player_stats.hand_weapon, "Weapon")
 		on_screen_ui.equip_item(GameData.player_stats.hand_weapon, "Weapon")

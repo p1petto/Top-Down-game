@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://w31u3wrcv7c1"]
+[gd_scene load_steps=18 format=3 uid="uid://w31u3wrcv7c1"]
 
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="1_2l0yv"]
 [ext_resource type="Texture2D" uid="uid://c704eubcpj64b" path="res://Assets/sprites/tilesets/plains.png" id="1_m8xdr"]
 [ext_resource type="Texture2D" uid="uid://1jcjiwddsl6t" path="res://Assets/sprites/tilesets/fences.png" id="2_20l8x"]
-[ext_resource type="PackedScene" uid="uid://ctim4bqy7ji0n" path="res://Scenes/npc.tscn" id="7_oa6l2"]
+[ext_resource type="Resource" uid="uid://l4uvmpdauanj" path="res://Resources/Enemies/Gobu/gobu.tres" id="5_ryd6e"]
+[ext_resource type="PackedScene" path="res://Scenes/npc.tscn" id="7_oa6l2"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="7_qdg77"]
 [ext_resource type="PackedScene" uid="uid://cylrcecuqtrja" path="res://Scenes/UI/inventory_slot.tscn" id="10_dro7y"]
-[ext_resource type="PackedScene" uid="uid://b52u86hihmd0s" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
-[ext_resource type="PackedScene" uid="uid://dvk7od4v07rh" path="res://Scenes/resource_item.tscn" id="10_wsxvo"]
+[ext_resource type="PackedScene" path="res://Scenes/pick_up_item.tscn" id="10_p0a0i"]
+[ext_resource type="PackedScene" path="res://Scenes/resource_item.tscn" id="10_wsxvo"]
 [ext_resource type="Resource" uid="uid://btdoaxwyiqj4l" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource.tres" id="11_ulk1a"]
 [ext_resource type="Resource" uid="uid://bcepdfnrx885a" path="res://Resources/PickUpItem/StonePickUpItem/stone_pick_up_item.tres" id="12_dp8j4"]
 [ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/PickUpItem/GoldCoin/gold_coin.tres" id="12_xevbu"]
@@ -153,6 +154,7 @@ collision_mask = 33
 [node name="Enemy3" parent="TileMap" node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_qdg77")]
 position = Vector2(31, -38)
 patrol_path = [NodePath("../EnemyPatrolPath/Marker2D"), NodePath("../EnemyPatrolPath/Marker2D2"), NodePath("../EnemyPatrolPath/Marker2D3")]
+enemy_data = ExtResource("5_ryd6e")
 
 [node name="EnemyPatrolPath" type="Node2D" parent="TileMap"]
 

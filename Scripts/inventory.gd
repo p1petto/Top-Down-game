@@ -16,13 +16,15 @@ const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 @export var items: Array[InventoryItem] = []
 #
 var taken_inventory_slots_count = 0
+var global_inventory = GameData.player_stats.player_inventory
 #var selected_spell_index = -1 
 #
 func _ready() -> void:
 	inventory_ui.equip_item.connect(on_item_equipped)
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	#inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
-	if len(items) > 0:
+	if len(global_inventory) > 0:
+		items = global_inventory.duplicate(true)
 		for item in items:
 			inventory_ui.add_item(item)
 
@@ -46,7 +48,7 @@ func add_item(item: InventoryItem, stacks: int):
 			items.append(item)
 		inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
-	GameData.player_inventory = items.duplicate()
+	GameData.player_stats.player_inventory = items.duplicate(true)
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 	
@@ -89,6 +91,9 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		taken_inventory_slots_count += 1
 
 func on_item_equipped(idx: int, slot_to_equip: String):
+	if items.size() <= idx:
+		push_error("Null items size")
+		return
 	var item_to_equip = items[idx]
 	print_debug(item_to_equip.name)
 	on_screen_ui.equip_item(item_to_equip, slot_to_equip)

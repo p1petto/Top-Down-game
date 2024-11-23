@@ -21,6 +21,10 @@ const INVENTORY_SLOT_SCENE = preload("res://Scenes/UI/inventory_slot.tscn")
 @export var columns = 4
 #
 func _ready():
+	print("Hello from ready")
+	for n in grid_container.get_children():
+		grid_container.remove_child(n)
+		n.queue_free()
 	grid_container.columns = columns
 	
 	for i in size:
@@ -48,6 +52,7 @@ func add_item(item: InventoryItem):
 	var slots = grid_container.get_children().filter(func (slot): return slot.is_empty)
 	var first_empty_slot = slots.front() as InventorySlot
 	first_empty_slot.add_item(item)
+	print("add_item")
 	
 
 func update_stack_at_slot_index(stacks_value: int, inventory_slot_index: int):
