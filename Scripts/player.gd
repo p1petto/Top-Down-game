@@ -20,6 +20,7 @@ var knockback_direction = null
 enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE, MINING }
 var current_state : State = State.IDLE : 
 	set(new_state):
+		print_debug("Changing State from %s to %s" % [current_state, new_state])
 		current_state = new_state
 		
 var current_delta: float = 0.0
@@ -79,11 +80,11 @@ func _physics_process(delta: float) -> void:
 			
 		State.DIED:
 			print("DIED")
-			#handle_died_state()
+			handle_died_state()
 			
 		
 	
-	if direction and current_state != State.DAMAGED:
+	if direction and (current_state != State.DAMAGED or current_state != State.DIED):
 		current_state = State.WALKING
 		
 	move_and_slide()

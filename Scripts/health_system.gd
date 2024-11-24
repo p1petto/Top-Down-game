@@ -27,10 +27,10 @@ func apply_damage(damage: float) -> void:
 	
 	print("Player health: ", current_health)
 	if current_health <= 0:
-		#print("Died signal emitted")
-		#died.emit()
+		print("Died signal emitted")
+		died.emit()
 		#$"..".current_state = $"..".State.DIED
-		$"..".handle_died_state()
+		# $"..".handle_died_state()
 		
 	else:
 		damage_taken.emit()
