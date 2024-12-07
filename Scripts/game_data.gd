@@ -9,5 +9,3 @@ var player_stats: PlayerStats:
 		if not player_stats:
 			player_stats = player_stats_init
 		return player_stats
-
-

@@ -13,3 +13,4 @@ func update() -> void:
 	max_value = GameData.player_stats.max_health
 	# Используем текущее здоровье напрямую из GameData
 	value = GameData.player_stats.current_health
+	print("health",value)
