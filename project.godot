@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 Enemies=""
 UsefullResources=""
+inventory_slot=""
 
 [input]
 

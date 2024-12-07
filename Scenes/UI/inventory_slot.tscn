@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/inventory_slot.gd" id="1_w45dq"]
 [ext_resource type="Texture2D" uid="uid://cfrqpqjlgsg6y" path="res://Assets/sprites/UI/FacesetBox.png" id="2_050qd"]
 
-[node name="InventorySlot" type="VBoxContainer"]
+[node name="InventorySlot" type="VBoxContainer" groups=["inventory_slot"]]
 script = ExtResource("1_w45dq")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

@@ -5,6 +5,7 @@ class_name InventorySlot
 signal equip_item
 signal drop_item
 signal slot_clicked
+signal eat_item
 
 var is_empty = true
 var is_selected = false
@@ -52,6 +53,8 @@ func on_popup_menu_item_pressed(id: int):
 		menu_button.disabled = true	
 	elif pressed_menu_item.contains("Надеть") and slot_to_equip != "NotEquipable":
 		equip_item.emit(slot_to_equip)
+	elif pressed_menu_item.contains("Съесть"):
+		eat_item.emit()
 
 		
 

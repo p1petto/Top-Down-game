@@ -11,6 +11,8 @@ class_name Player
 @onready var items 
 @onready var sound: SoundPlayer =  $AudioStreamPlayer
 
+@onready var slots: Array
+
 
 @export var hand_weapon: InventoryItem
 
@@ -46,6 +48,11 @@ func _ready() -> void:
 	hunger_system.current_satiety = GameData.player_stats.current_satiety
 	
 	hunger_system.hunger_die.connect(on_player_dead)
+	
+	var grid = inventory_ui.get_node("%GridContainer")
+	slots = grid.get_children()
+	for slot in slots:
+		slot.eat_item.connect(func ():eating(slot))
 	
 	
 	# if GameData.player_inventory.size() > 0:
@@ -180,3 +187,6 @@ func _on_area_pick_up_area_entered(area: Area2D) -> void:
 func set_active_weapon(weapon: InventoryItem, slot_to_equip: String) -> void:
 	if slot_to_equip == "Weapon":
 		hand_weapon = weapon
+		
+func eating(slot):
+	print(slot)

@@ -33,6 +33,7 @@ func _ready():
 		
 		inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(i, slot_to_equip))
 		inventory_slot.drop_item.connect(func (): drop_item_on_the_ground.emit(i))
+		inventory_slot.eat_item.connect(func ():eating(i))
 
 	#for i in spell_slots.size():
 		#spell_slots[i].slot_clicked.connect(on_spell_slot_clicked.bind(i))
@@ -47,6 +48,8 @@ func toggle():
 		visible = true
 		get_tree().paused = true
 
+func eating(i):
+	clear_slot_at_index(i)
 
 func add_item(item: InventoryItem):
 	var slots = grid_container.get_children().filter(func (slot): return slot.is_empty)
@@ -67,6 +70,7 @@ func clear_slot_at_index(idx: int):
 	
 	empty_inventory_slot.drop_item.connect(func(): drop_item_on_the_ground.emit(idx))
 	empty_inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(idx, slot_to_equip))
+	empty_inventory_slot.eat_item.connect(func ():eating(idx))
 	
 	var child_to_remove = grid_container.get_child(idx)
 	grid_container.remove_child(child_to_remove)
