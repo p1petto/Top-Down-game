@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Top-Down-game"
-run/main_scene="res://Scenes/world/zero.tscn"
+run/main_scene="res://Scenes/UI/Menu/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameData="*res://Scripts/game_data.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 BackgroundMusic="*res://Scripts/background_music.gd"
+
+[display]
+
+window/size/resizable=false
 
 [editor_plugins]
 
