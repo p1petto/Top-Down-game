@@ -12,3 +12,4 @@ texture = ExtResource("3_lmfvc")
 max_stacks = 100
 price = 1
 food = false
+durability = 15

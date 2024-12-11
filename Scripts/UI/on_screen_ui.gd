@@ -8,5 +8,8 @@ class_name OnScreenUI
 	"Weapon": hand_slot
 }
 
-func equip_item(item: InventoryItem, slot_to_equip: String):
-	slots_dictionary[slot_to_equip].set_equipment_texture(item.texture)
+func equip_item(item: InventoryItem):
+	if slots_dictionary.get(item.slot_type) != null:
+		slots_dictionary[item.slot_type].set_equipment_texture(item.texture)
+	else:
+		print_debug("Разработчик!: такой ячейки еще нет!")

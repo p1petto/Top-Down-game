@@ -51,8 +51,8 @@ func on_popup_menu_item_pressed(id: int):
 		print("Выброс")
 		drop_item.emit()
 		menu_button.disabled = true	
-	elif pressed_menu_item.contains("Надеть") and slot_to_equip != "NotEquipable":
-		equip_item.emit(slot_to_equip)
+	elif pressed_menu_item.contains("Надеть") and slot_to_equip == "Equipable":
+		equip_item.emit()
 	elif pressed_menu_item.contains("Съесть"):
 		eat_item.emit()
 
@@ -62,18 +62,23 @@ func add_item(item: InventoryItem):
 	var popup_menu: PopupMenu = menu_button.get_popup()
 	
 	popup_menu.clear()
-	
-	if item.slot_type != "NotEquipable":
-		slot_to_equip = item.slot_type
-		popup_menu.add_item("Надеть", 0)  
-		popup_menu.add_item("Выбросить", 1)
-	else:
-		if item.food:
-			popup_menu.add_item("Выбросить", 0)  
-			popup_menu.add_item("Съесть", 1)  
-		else:
-			popup_menu.add_item("Выбросить", 0)  
-	
+	match item.slot_equip:
+		"Equipable":
+			slot_to_equip = item.slot_equip
+			popup_menu.add_item("Надеть")  
+			# popup_menu.add_item("Выбросить", 1)
+		_:
+			pass
+	match item.slot_type:
+		"Weapon":
+			pass
+		"Food":
+			popup_menu.add_item("Съесть") 
+		"Other":
+			pass
+
+	popup_menu.add_item("Выбросить")
+
 	is_empty = false
 	menu_button.disabled = false
 	texture_rect.texture = item.texture
