@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_npc: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var sprites: SpriteFrames
+@export var flip: bool = false
 @export var dialogue_resource: DialogueResource
 @export var item: InventoryItem
 
@@ -12,6 +13,12 @@ var is_dialogue_active = false
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(on_dialogue_ended)
 	#item_sale.connect(on_dialogue_ended)
+	if sprites:
+		animated_sprite_npc.sprite_frames = sprites
+	if flip:
+		animated_sprite_npc.flip_h = true
+	animated_sprite_npc.play("default")
+	
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and dialogue_resource and not is_dialogue_active:

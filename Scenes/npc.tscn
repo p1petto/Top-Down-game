@@ -1,45 +1,45 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctim4bqy7ji0n"]
 
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_n65hq"]
-[ext_resource type="Texture2D" uid="uid://pk7idky2nj3y" path="res://Assets/sprites/characters/Player/idle-Sheet.png" id="2_olkbd"]
+[ext_resource type="Texture2D" uid="uid://bjpn1qd3013y5" path="res://Assets/sprites/characters/NPC/idle-Sheet.png" id="2_l5f4j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0bla"]
 radius = 34.0
 height = 68.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tyraw"]
-atlas = ExtResource("2_olkbd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejijp"]
+atlas = ExtResource("2_l5f4j")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jys85"]
-atlas = ExtResource("2_olkbd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_meqm7"]
+atlas = ExtResource("2_l5f4j")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_33qq6"]
-atlas = ExtResource("2_olkbd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q73ed"]
+atlas = ExtResource("2_l5f4j")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t443"]
-atlas = ExtResource("2_olkbd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcl67"]
+atlas = ExtResource("2_l5f4j")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7r87u"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7ve6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tyraw")
+"texture": SubResource("AtlasTexture_ejijp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jys85")
+"texture": SubResource("AtlasTexture_meqm7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33qq6")
+"texture": SubResource("AtlasTexture_q73ed")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6t443")
+"texture": SubResource("AtlasTexture_lcl67")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -55,10 +55,7 @@ shape = SubResource("CapsuleShape2D_f0bla")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -9)
-sprite_frames = SubResource("SpriteFrames_7r87u")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.956449
+sprite_frames = SubResource("SpriteFrames_s7ve6")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -9)
