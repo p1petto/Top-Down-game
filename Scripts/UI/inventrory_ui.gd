@@ -31,7 +31,7 @@ func _ready():
 		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
 		grid_container.add_child(inventory_slot)
 		
-		inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(i, slot_to_equip))
+		inventory_slot.equip_item.connect(func(): equip_item.emit(i))
 		inventory_slot.drop_item.connect(func (): drop_item_on_the_ground.emit(i))
 		inventory_slot.eat_item.connect(func ():eating(i))
 
@@ -69,7 +69,7 @@ func clear_slot_at_index(idx: int):
 	toggle()
 	
 	empty_inventory_slot.drop_item.connect(func(): drop_item_on_the_ground.emit(idx))
-	empty_inventory_slot.equip_item.connect(func(slot_to_equip: String): equip_item.emit(idx, slot_to_equip))
+	empty_inventory_slot.equip_item.connect(func(): equip_item.emit(idx))
 	empty_inventory_slot.eat_item.connect(func ():eating(idx))
 	
 	var child_to_remove = grid_container.get_child(idx)

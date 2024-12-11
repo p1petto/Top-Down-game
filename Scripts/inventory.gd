@@ -90,15 +90,13 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 			inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
 
-func on_item_equipped(idx: int, slot_to_equip: String):
-	if items.size() <= idx:
-		push_error("Null items size")
-		return
+func on_item_equipped(idx: int):
+	assert(idx <= items.size(), "item id`s over array")
 	var item_to_equip = items[idx]
 	print_debug(item_to_equip.name)
-	on_screen_ui.equip_item(item_to_equip, slot_to_equip)
+	on_screen_ui.equip_item(item_to_equip)
 	#player.hand_weapon = item
-	player.set_active_weapon(items[idx], slot_to_equip)
+	player.set_active_weapon(items[idx])
 	GameData.player_stats.hand_weapon = item_to_equip
 
 

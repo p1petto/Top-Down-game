@@ -60,8 +60,8 @@ func _ready() -> void:
 	# 	for item in inventory.items:
 	# 		inventory_ui.add_item(item) 
 	if GameData.player_stats.hand_weapon:
-		set_active_weapon(GameData.player_stats.hand_weapon, "Weapon")
-		on_screen_ui.equip_item(GameData.player_stats.hand_weapon, "Weapon")
+		set_active_weapon(GameData.player_stats.hand_weapon)
+		on_screen_ui.equip_item(GameData.player_stats.hand_weapon,)
 	
 
 
@@ -184,9 +184,11 @@ func _on_area_pick_up_area_entered(area: Area2D) -> void:
 		inventory.add_item(area.inventory_item, area.stacks)
 		area.queue_free()
 
-func set_active_weapon(weapon: InventoryItem, slot_to_equip: String) -> void:
-	if slot_to_equip == "Weapon":
+func set_active_weapon(weapon: InventoryItem) -> void:
+	if weapon.slot_type == "Weapon":
 		hand_weapon = weapon
+	else:
+		printerr("Неправильный тип предмета")
 		
 func eating(slot):
 	print(slot)
