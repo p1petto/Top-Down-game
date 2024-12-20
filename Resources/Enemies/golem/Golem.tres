@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://cyufftro6dyem"]
+
+[ext_resource type="Shape2D" uid="uid://f81uul7g4otr" path="res://Resources/Enemies/golem/golem_agro_collision_shape_2d.tres" id="1_q4jus"]
+[ext_resource type="Shape2D" uid="uid://bog5wymuqbqed" path="res://Resources/Enemies/golem/golem_rectangle_shape_2d.tres" id="2_eip2n"]
+[ext_resource type="Shape2D" uid="uid://b2g6tttk6v5q8" path="res://Resources/Enemies/golem/golem_capsule_shape_2d.tres" id="3_cc64l"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_type.gd" id="4_ewvqf"]
+[ext_resource type="SpriteFrames" uid="uid://cbit1bsbygt83" path="res://Resources/Enemies/golem/golem_sprite_frames.tres" id="5_mbwhw"]
+
+[resource]
+script = ExtResource("4_ewvqf")
+speed = 500.0
+patrol_wait_time = 1.0
+max_health = 666
+chase_distance = 300.0
+sprite_frames = ExtResource("5_mbwhw")
+collision_shape = ExtResource("3_cc64l")
+attack_collision = ExtResource("2_eip2n")
+agro_collision = ExtResource("1_q4jus")

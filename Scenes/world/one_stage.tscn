@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://vd75sagmqg0m"]
+[gd_scene load_steps=15 format=4 uid="uid://vd75sagmqg0m"]
 
 [ext_resource type="TileSet" uid="uid://mxvk3pfnly5d" path="res://Scenes/tilesets/dungeon.tres" id="1_su2bq"]
 [ext_resource type="TileSet" uid="uid://d35fak84bvcpw" path="res://Scenes/tilesets/walll.tres" id="3_n8urx"]
@@ -9,12 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dvk7od4v07rh" path="res://Scenes/resource_item.tscn" id="8_t1hj2"]
 [ext_resource type="Resource" uid="uid://btdoaxwyiqj4l" path="res://Resources/Stone/Stone_resources_simple/Stone_resources_simple_1/stone_resource.tres" id="9_x0c78"]
 [ext_resource type="Resource" uid="uid://bcepdfnrx885a" path="res://Resources/PickUpItem/StonePickUpItem/stone_pick_up_item.tres" id="10_aed7b"]
+[ext_resource type="Resource" uid="uid://l4uvmpdauanj" path="res://Resources/Enemies/Gobu/gobu.tres" id="11_8bj4t"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="12_8qwkh"]
-[ext_resource type="Resource" uid="uid://l4uvmpdauanj" path="res://Resources/Enemies/Gobu/gobu.tres" id="13_wt1ph"]
-[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="14_ao10j"]
-[ext_resource type="Resource" uid="uid://bhjkqosjrdoso" path="res://Resources/PickUpItem/GoldCoin/gold_coin.tres" id="15_7a716"]
+[ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="12_r5sqf"]
+[ext_resource type="Resource" uid="uid://tsx33bjeqt60" path="res://Resources/PickUpItem/GobuMeat/gobu_meat.tres" id="13_fdgs1"]
 [ext_resource type="TileSet" uid="uid://b03clw2il30fq" path="res://Scenes/tilesets/wallu.tres" id="15_wam2y"]
-[ext_resource type="Resource" uid="uid://tsx33bjeqt60" path="res://Resources/PickUpItem/GobuMeat/gobu_meat.tres" id="16_lfqj2"]
 
 [node name="OneStage" type="Node2D"]
 texture_filter = 1
@@ -127,14 +126,14 @@ dropped_resource = ExtResource("10_aed7b")
 [node name="Enemy" parent="TileMapObject" node_paths=PackedStringArray("patrol_path") instance=ExtResource("12_8qwkh")]
 position = Vector2(283, 78)
 patrol_path = [NodePath("../../Marker2D")]
-enemy_data = ExtResource("13_wt1ph")
-dropped_resource = Array[ExtResource("14_ao10j")]([ExtResource("15_7a716"), ExtResource("16_lfqj2")])
+enemy_data = ExtResource("11_8bj4t")
+dropped_resource = Array[ExtResource("12_r5sqf")]([ExtResource("13_fdgs1")])
 
 [node name="Enemy2" parent="TileMapObject" node_paths=PackedStringArray("patrol_path") instance=ExtResource("12_8qwkh")]
 position = Vector2(90, 72)
 patrol_path = [NodePath("../../Marker2D2")]
-enemy_data = ExtResource("13_wt1ph")
-dropped_resource = Array[ExtResource("14_ao10j")]([ExtResource("15_7a716"), ExtResource("16_lfqj2")])
+enemy_data = ExtResource("11_8bj4t")
+dropped_resource = Array[ExtResource("12_r5sqf")]([ExtResource("13_fdgs1")])
 
 [node name="Hatch" parent="TileMapObject" node_paths=PackedStringArray("blocking_object") instance=ExtResource("7_00xwl")]
 position = Vector2(344, 216)

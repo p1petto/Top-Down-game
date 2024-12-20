@@ -161,7 +161,8 @@ func _on_attack_collision_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		var animation = body.get_node("Sprite2D").animation
 		if str(animation).contains("attack"):
-			if $"../Player/Sprite2D".frame <= 1:
+			var sprite_player = player.get_node("Sprite2D")
+			if sprite_player.frame <= 1:
 				return
 		if current_state == State.DAMAGED:
 			return
