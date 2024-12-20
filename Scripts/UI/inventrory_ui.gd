@@ -61,6 +61,7 @@ func add_item(item: InventoryItem):
 func update_stack_at_slot_index(stacks_value: int, inventory_slot_index: int):
 	if inventory_slot_index == -1:
 		return
+	print_debug("UPDATE STACK: ", inventory_slot_index)
 	var inventory_slot: InventorySlot = grid_container.get_child(inventory_slot_index)
 	inventory_slot.stacks_label.text = str(stacks_value)
 

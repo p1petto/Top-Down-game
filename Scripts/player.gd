@@ -22,7 +22,7 @@ var knockback_direction = null
 enum State { ATTACK, DAMAGED, WALKING, DIED, IDLE, MINING }
 var current_state : State = State.IDLE : 
 	set(new_state):
-		print_debug("Changing State from %s to %s" % [current_state, new_state])
+		# print_debug("Changing State from %s to %s" % [current_state, new_state])
 		current_state = new_state
 		
 var current_delta: float = 0.0

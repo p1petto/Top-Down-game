@@ -12,8 +12,8 @@ class_name Inventory
 
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
-# items currently in inventory
-@export var items: Array[InventoryItem] = []
+# inventory_items currently in inventory
+@export var inventory_items: Array[InventoryItem] = []
 #
 var taken_inventory_slots_count = 0
 var global_inventory = GameData.player_stats.player_inventory
@@ -24,79 +24,83 @@ func _ready() -> void:
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	#inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
 	if len(global_inventory) > 0:
-		items = global_inventory.duplicate(true)
-		for item in items:
-			inventory_ui.add_item(item)
+		inventory_items = global_inventory.duplicate(true)
+		for item in inventory_items:
+			if item != null:
+				inventory_ui.add_item(item)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_ui.toggle()
 	
 		
-
-
 func add_item(item: InventoryItem, stacks: int):
 	#print_debug(item.name)
 	if stacks && item.max_stacks > 1:
 		add_stackable_item_to_inventory(item, stacks)
 	else:
-		#items.append(item)
-		var idx = items.find(null)
+		#inventory_items.append(item)
+		var idx = inventory_items.find(null)
 		if idx != -1:
-			items[idx] = item
-		else: 
-			items.append(item)
+			inventory_items[idx] = item
+		else:
+			inventory_items.append(item)
 		inventory_ui.add_item(item)
 		taken_inventory_slots_count += 1
-	GameData.player_stats.player_inventory = items.duplicate(true)
+	GameData.player_stats.player_inventory = inventory_items.duplicate(true)
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
+	# item.stacks = stacks
+	print_debug("item.stacks: %d, stacks: %d, max_stacks: %d" % [item.stacks, stacks, item.max_stacks])
+	# var empty_slot_index = inventory_items.find(null)
+	var existing_items: Array[int] = []
+	for i in inventory_items.size():
+		if inventory_items[i] != null and inventory_items[i].name == item.name:
+			existing_items.append(i)
 	
-	var empty_slot_index = items.find(null)
-	var existing_item_index = -1
-	
-	for i in items.size():
-		if items[i] != null and items[i].name == item.name:
-			existing_item_index = i
-			break
-	
-	if existing_item_index != -1:
-		var inventory_item = items[existing_item_index]
-		if inventory_item.stacks + stacks <= item.max_stacks:
-			inventory_item.stacks += stacks 
-			items[existing_item_index] = inventory_item
-			inventory_ui.update_stack_at_slot_index(inventory_item.stacks, existing_item_index)
-		else:
-			var stacks_diff = inventory_item.stacks + stacks - item.max_stacks
-			var additional_inventory_item = inventory_item.duplicate(true)
-			inventory_item.stacks = item.max_stacks
-			inventory_ui.update_stack_at_slot_index(inventory_item.max_stacks, existing_item_index)
-			
-			additional_inventory_item.stacks = stacks_diff
-			if empty_slot_index != -1:
-				items[empty_slot_index] = additional_inventory_item
-				inventory_ui.add_item(additional_inventory_item)
-			else:
-				items.append(additional_inventory_item)
-				inventory_ui.add_item(additional_inventory_item)
-			taken_inventory_slots_count += 1
-	else:
-		item.stacks = stacks
-		if empty_slot_index != -1:
-			items[empty_slot_index] = item
-			inventory_ui.add_item(item)
-		else:
-			items.append(item)
-			inventory_ui.add_item(item)
-		taken_inventory_slots_count += 1
+	print_debug(existing_items)
 
+	var remains_stacks := stacks
+	for i in existing_items:
+		remains_stacks = addStackToStackable(inventory_items[i],stacks)
+		inventory_ui.update_stack_at_slot_index(inventory_items[i].stacks, i)
+		if remains_stacks == 0:
+			break
+	print_debug("Осталось",remains_stacks / item.max_stacks + 1)
+	for i in range(remains_stacks / item.max_stacks + 1):
+		var new_item := item.duplicate(true)
+		remains_stacks = addStackToStackable(new_item, remains_stacks)
+		print_debug(remains_stacks)
+		var empty_slot_index = inventory_items.find(null)
+		print_debug(inventory_items)
+		if empty_slot_index == -1:
+			printerr("Место кончилось :(")
+			return
+		inventory_items[empty_slot_index] = new_item
+		inventory_ui.add_item(new_item)
+
+
+	
+
+## addStackToStackable добавляет stacks к item и возвращает количество которое не вместилось
+func addStackToStackable(item: InventoryItem, stacks: int) -> int:
+	print_debug("item.stacks: %d, stacks: %d, max_stacks: %d" % [item.stacks, stacks, item.max_stacks])
+	var integr: int = (item.stacks + stacks) / item.max_stacks
+	var remainder: int = (item.stacks + stacks) % item.max_stacks
+	print_debug("integr: %d, remainder: %d" % [integr, remainder])
+	if integr > 0: 
+		item.stacks = item.max_stacks
+		return integr * remainder
+	item.stacks = remainder
+	return integr * remainder
+	
 func on_item_equipped(idx: int):
-	assert(idx <= items.size(), "item id`s over array")
-	var item_to_equip = items[idx]
+	assert(idx <= inventory_items.size(), "item id`s over array")
+	var item_to_equip = inventory_items[idx]
 	print_debug(item_to_equip.name)
 	on_screen_ui.equip_item(item_to_equip)
 	#player.hand_weapon = item
-	player.set_active_weapon(items[idx])
+	player.set_active_weapon(inventory_items[idx])
 	GameData.player_stats.hand_weapon = item_to_equip
 
 
@@ -111,7 +115,7 @@ func clear_inventory_slot(idx: int):
 	
 func eject_item_into_the_ground(idx: int):
 	
-	var inventory_item_to_eject = items[idx]
+	var inventory_item_to_eject = inventory_items[idx]
 	var item_to_eject_as_pickup = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
 	
 	item_to_eject_as_pickup.inventory_item = inventory_item_to_eject
@@ -140,5 +144,4 @@ func eject_item_into_the_ground(idx: int):
 		player.hand_weapon = null
 		on_screen_ui.hand_slot.set_equipment_texture(null)
 		
-	items[idx] = null
-	
+	inventory_items[idx] = null
