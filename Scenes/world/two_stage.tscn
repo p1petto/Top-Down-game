@@ -50,7 +50,7 @@ enemy_data = ExtResource("7_qayah")
 
 [node name="Enemy2" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
 position = Vector2(-130, 304)
-patrol_path = [NodePath("../../Marker2D2")]
+patrol_path = [NodePath("../../Marker2D2"), NodePath("../../Marker2D2")]
 enemy_data = ExtResource("7_qayah")
 
 [node name="Enemy3" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]

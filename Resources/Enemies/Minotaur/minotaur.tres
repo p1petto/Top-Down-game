@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://bbklf8joq0p74"]
+
+[ext_resource type="Shape2D" uid="uid://b7an4c34elqr1" path="res://Resources/Enemies/Minotaur/minotaur_agro_collision_shape_2d.tres" id="1_6awcv"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_type.gd" id="1_w44l5"]
+[ext_resource type="SpriteFrames" uid="uid://b6dabjxq4f6g0" path="res://Resources/Enemies/Minotaur/minotaur_sprites.tres" id="2_5m43l"]
+[ext_resource type="Shape2D" uid="uid://dw1qycoluxrxa" path="res://Resources/Enemies/Minotaur/minotaur_attack_collision_shape_2d.tres" id="2_o3lub"]
+[ext_resource type="Shape2D" uid="uid://c2bsbknk62cef" path="res://Resources/Enemies/Minotaur/minotaur_collision_shape_2d.tres" id="3_06hoo"]
+
+[resource]
+script = ExtResource("1_w44l5")
+speed = 2000.0
+patrol_wait_time = 1.0
+max_health = 200
+chase_distance = 300.0
+sprite_frames = ExtResource("2_5m43l")
+collision_shape = ExtResource("3_06hoo")
+attack_collision = ExtResource("2_o3lub")
+agro_collision = ExtResource("1_6awcv")
