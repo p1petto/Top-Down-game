@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0yqjq7gubvhw"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y4g5m"]
-[ext_resource type="SpriteFrames" uid="uid://b6dabjxq4f6g0" path="res://Resources/Enemies/Minotaur/minotaur_sprites.tres" id="2_oxk78"]
+[ext_resource type="SpriteFrames" uid="uid://cba8nejb8v45r" path="res://Resources/Enemies/Gobu/gobu_sprite_frames.tres" id="2_px854"]
 [ext_resource type="Script" path="res://Scenes/animated_controller_enemy.gd" id="3_4jr8s"]
-[ext_resource type="Shape2D" uid="uid://c2bsbknk62cef" path="res://Resources/Enemies/Minotaur/minotaur_collision_shape_2d.tres" id="4_75gfb"]
 [ext_resource type="Script" path="res://Scripts/health_system_enemy.gd" id="4_cmbyi"]
-[ext_resource type="Shape2D" uid="uid://dw1qycoluxrxa" path="res://Resources/Enemies/Minotaur/minotaur_attack_collision_shape_2d.tres" id="5_f5o5n"]
+[ext_resource type="Shape2D" uid="uid://bf7r0hyb74ldm" path="res://Resources/Enemies/Gobu/gobu_collision_shape_2d.tres" id="4_rpq3x"]
+[ext_resource type="Shape2D" uid="uid://4hjh7hc5jhuy" path="res://Resources/Enemies/Gobu/gobu_attack_collision_shape_2d.tres" id="5_pub0e"]
 [ext_resource type="Shape2D" uid="uid://b7an4c34elqr1" path="res://Resources/Enemies/Minotaur/minotaur_agro_collision_shape_2d.tres" id="6_f1dom"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
@@ -16,24 +16,23 @@ script = ExtResource("1_y4g5m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
-sprite_frames = ExtResource("2_oxk78")
+sprite_frames = ExtResource("2_px854")
 animation = &"walk_top"
-frame_progress = 0.843414
 script = ExtResource("3_4jr8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -8)
 scale = Vector2(1, 0.76)
-shape = ExtResource("4_75gfb")
+shape = ExtResource("4_rpq3x")
 
 [node name="AttackCollision" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCollision"]
-position = Vector2(-2.5, -6)
+position = Vector2(-1, 0)
 scale = Vector2(3.92, 1)
-shape = ExtResource("5_f5o5n")
+shape = ExtResource("5_pub0e")
 debug_color = Color(0.791065, 0.375616, 0.544823, 0.42)
 
 [node name="AggroArea" type="Area2D" parent="."]

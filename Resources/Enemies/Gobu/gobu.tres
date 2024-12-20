@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://l4uvmpdauanj"]
 
-[ext_resource type="Shape2D" uid="uid://c7rrnabi5vkq6" path="res://Resources/Enemies/Spider/spider_agro_collision_shape_2d.tres" id="1_2pl0o"]
-[ext_resource type="Shape2D" uid="uid://k7fvc4n538sd" path="res://Resources/Enemies/Spider/spider_attack_collision_shape_2d.tres" id="2_gtels"]
-[ext_resource type="Shape2D" uid="uid://br2mbm1yvil1j" path="res://Resources/Enemies/Spider/spider_collision_shape_2d.tres" id="3_0jax0"]
+[ext_resource type="Shape2D" uid="uid://djjyaprtm5xbp" path="res://Resources/Enemies/Gobu/gobu_agro_collision_shape_2d.tres" id="1_5wpe5"]
+[ext_resource type="Shape2D" uid="uid://4hjh7hc5jhuy" path="res://Resources/Enemies/Gobu/gobu_attack_collision_shape_2d.tres" id="2_rvgna"]
+[ext_resource type="Shape2D" uid="uid://bf7r0hyb74ldm" path="res://Resources/Enemies/Gobu/gobu_collision_shape_2d.tres" id="3_qo3ci"]
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_type.gd" id="4_nwnhm"]
 [ext_resource type="SpriteFrames" uid="uid://cba8nejb8v45r" path="res://Resources/Enemies/Gobu/gobu_sprite_frames.tres" id="5_oia8v"]
 
@@ -13,6 +13,6 @@ patrol_wait_time = 1.0
 max_health = 30
 chase_distance = 200.0
 sprite_frames = ExtResource("5_oia8v")
-collision_shape = ExtResource("3_0jax0")
-attack_collision = ExtResource("2_gtels")
-agro_collision = ExtResource("1_2pl0o")
+collision_shape = ExtResource("3_qo3ci")
+attack_collision = ExtResource("2_rvgna")
+agro_collision = ExtResource("1_5wpe5")
