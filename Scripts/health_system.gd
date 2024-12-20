@@ -34,3 +34,5 @@ func apply_damage(damage: float) -> void:
 		
 	else:
 		damage_taken.emit()
+func heal(heal: int) -> void:
+	current_health += heal

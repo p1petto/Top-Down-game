@@ -10,6 +10,8 @@ class_name Inventory
 @onready var animated_sprite_2d: AnimationController = $"../Sprite2D"
 @onready var world = $"../../"
 
+signal item_health(health_points: int)
+
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
 # inventory_items currently in inventory
@@ -21,6 +23,7 @@ var global_inventory = GameData.player_stats.player_inventory
 #
 func _ready() -> void:
 	inventory_ui.equip_item.connect(on_item_equipped)
+	inventory_ui.eat_item.connect(on_item_eated)
 	inventory_ui.drop_item_on_the_ground.connect(on_item_dropped)
 	#inventory_ui.spell_slot_clicked.connect(on_spell_slot_clicked)
 	if len(global_inventory) > 0:
@@ -80,8 +83,17 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		inventory_items[empty_slot_index] = new_item
 		inventory_ui.add_item(new_item)
 
-
+func remove_stackable_item(idx: int, stacks: int):
+	assert(idx <= inventory_items.size(), "item id`s over array")
+	var item_to_equip = inventory_items[idx]
+	if item_to_equip.stacks == stacks:
+		inventory_items[idx] = null
+		clear_inventory_slot(idx)
+		return
+	item_to_equip.stacks -= stacks
+	inventory_ui.update_stack_at_slot_index(item_to_equip.stacks, idx)
 	
+
 
 ## addStackToStackable добавляет stacks к item и возвращает количество которое не вместилось
 func addStackToStackable(item: InventoryItem, stacks: int) -> int:
@@ -108,6 +120,11 @@ func on_item_equipped(idx: int):
 func on_item_dropped(idx: int):
 	clear_inventory_slot(idx)
 	eject_item_into_the_ground(idx)
+
+func on_item_eated(idx):
+	print_debug(idx)
+	item_health.emit(30)
+	remove_stackable_item(idx, 1)
 	
 
 func clear_inventory_slot(idx: int):

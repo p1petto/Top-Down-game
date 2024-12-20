@@ -26,7 +26,11 @@ func init(max_satiety: float) -> void:
 
 func _on_timer_timeout() -> void:
 	current_satiety -= 1
-	GameData.player_stats.current_satiety = current_satiety
-	satiety_changed.emit()
+	# NOTE: ????
+	# GameData.player_stats.current_satiety = current_satiety
+	# satiety_changed.emit()
 	if current_satiety == 0:
 		hunger_die.emit()
+
+func eat(value: int) -> void:
+	current_satiety += value

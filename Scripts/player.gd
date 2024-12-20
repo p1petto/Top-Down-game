@@ -49,6 +49,8 @@ func _ready() -> void:
 	
 	hunger_system.hunger_die.connect(on_player_dead)
 	
+	inventory.item_health.connect(_on_health_item_eated)
+
 	var grid = inventory_ui.get_node("%GridContainer")
 	slots = grid.get_children()
 	for slot in slots:
@@ -158,6 +160,10 @@ func on_player_dead() -> void:
 	current_state = State.DIED
 	#GameData.player_stats.current_health = 0
 	
+func _on_health_item_eated(amount: int):
+	print("HEAL")
+	health_system.heal(amount)
+	hunger_system.eat(100)
 
 func on_player_damage() -> void:
 	current_state = State.DAMAGED

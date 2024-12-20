@@ -4,6 +4,7 @@ class_name InventoryUI
 
 signal drop_item_on_the_ground(idx: int)
 signal equip_item(idx: int, slot_to_equip)
+signal eat_item(idx)
 signal spell_slot_clicked(idx: int)
 #
 @onready var grid_container: GridContainer = %GridContainer
@@ -33,7 +34,7 @@ func _ready():
 		
 		inventory_slot.equip_item.connect(func(): equip_item.emit(i))
 		inventory_slot.drop_item.connect(func (): drop_item_on_the_ground.emit(i))
-		inventory_slot.eat_item.connect(func ():eating(i))
+		inventory_slot.eat_item.connect(func (): eat_item.emit(i))
 
 	#for i in spell_slots.size():
 		#spell_slots[i].slot_clicked.connect(on_spell_slot_clicked.bind(i))
@@ -71,7 +72,7 @@ func clear_slot_at_index(idx: int):
 	
 	empty_inventory_slot.drop_item.connect(func(): drop_item_on_the_ground.emit(idx))
 	empty_inventory_slot.equip_item.connect(func(): equip_item.emit(idx))
-	empty_inventory_slot.eat_item.connect(func ():eating(idx))
+	empty_inventory_slot.eat_item.connect(func (): eat_item.emit(idx))
 	
 	var child_to_remove = grid_container.get_child(idx)
 	grid_container.remove_child(child_to_remove)
