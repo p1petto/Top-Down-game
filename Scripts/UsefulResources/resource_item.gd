@@ -13,6 +13,8 @@ var current_durability: int
 @export var dropped_resource: InventoryItem 
 const PICKUP_ITEM_SCENE = preload("res://Scenes/pick_up_item.tscn")
 
+signal destroed
+
 func _ready() -> void:
 	sprite_2d.texture = useful_resource.texture
 	collision_shape_2d.shape = useful_resource.ground_collision_shape
@@ -29,6 +31,7 @@ func apply_damage(damage_amount: int) -> void:
 	if current_durability <= 0:
 		handle_destruction()
 		eject_item_into_the_ground()
+		destroed.emit()
 
 func handle_destruction() -> void:
 	call_deferred("disable_collision")

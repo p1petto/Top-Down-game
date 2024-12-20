@@ -3,11 +3,17 @@ extends Area2D
 # Укажите путь к сцене, на которую нужно перейти
 @export var next_scene: String 
 @export var transition_duration: float = 0.5
+@export var blocking_object: ResourceItem
 
 var can_interact = false
+var disguised = true
 
 func _ready() -> void:
 	input_pickable = true
+	if blocking_object:
+		blocking_object.destroed.connect(hide_disguise)
+	else:
+		disguised = false
 
 		
 func _input(event):
@@ -28,11 +34,12 @@ func transition_to_scene() -> void:
 	get_tree().change_scene_to_file(next_scene)
 	
 	
-
+func hide_disguise():
+	disguised = false
 
 func _on_body_entered(body: Node2D) -> void:
 	print ("true")
-	if body.name == 'Player':
+	if body.name == 'Player' and !disguised:
 		can_interact = true
 
 

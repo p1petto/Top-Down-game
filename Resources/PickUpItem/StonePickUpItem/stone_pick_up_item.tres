@@ -7,11 +7,11 @@
 [resource]
 script = ExtResource("2_03bwt")
 slot_type = "NotEquipable"
+slot_equip = "NotEquipable"
 tool_type = "NoType"
 ground_collision_shape = ExtResource("1_rbgbp")
 name = "Stone"
 texture = ExtResource("3_oiw38")
 max_stacks = 100
 price = 1
-food = false
 damage = 0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://bw3nfen5uayfu"]
+
+[ext_resource type="Shape2D" uid="uid://c7rrnabi5vkq6" path="res://Resources/Enemies/Spider/spider_agro_collision_shape_2d.tres" id="1_1bacw"]
+[ext_resource type="Shape2D" uid="uid://k7fvc4n538sd" path="res://Resources/Enemies/Spider/spider_attack_collision_shape_2d.tres" id="2_kple4"]
+[ext_resource type="Shape2D" uid="uid://br2mbm1yvil1j" path="res://Resources/Enemies/Spider/spider_collision_shape_2d.tres" id="3_v45p3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_type.gd" id="4_xh0dr"]
+[ext_resource type="SpriteFrames" uid="uid://dlhaaiuq0sayd" path="res://Resources/Enemies/Spider/spider_sprite_frames.tres" id="5_wg3rd"]
+
+[resource]
+script = ExtResource("4_xh0dr")
+speed = 2500.0
+patrol_wait_time = 1.0
+max_health = 30
+chase_distance = 150.0
+sprite_frames = ExtResource("5_wg3rd")
+collision_shape = ExtResource("3_v45p3")
+attack_collision = ExtResource("2_kple4")
+agro_collision = ExtResource("1_1bacw")
