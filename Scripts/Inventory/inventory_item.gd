@@ -2,7 +2,7 @@ extends Resource
 
 class_name InventoryItem 
 
-var stacks = 1
+var stacks = 0
 
 @export_enum("Weapon", "Food", "Other") 
 var slot_type: String = "Other"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b52u86hihmd0s"]
+[gd_scene load_steps=4 format=3 uid="uid://bn533ap6sm5o"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/pick_up_item.gd" id="1_r1psv"]
 [ext_resource type="Texture2D" uid="uid://dyolx7475xpbr" path="res://Assets/sprites/Items/Rocks and Gems/19.png" id="2_45dij"]

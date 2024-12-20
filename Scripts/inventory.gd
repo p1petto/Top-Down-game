@@ -50,7 +50,7 @@ func add_item(item: InventoryItem, stacks: int):
 	GameData.player_stats.player_inventory = inventory_items.duplicate(true)
 	 #
 func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
-	# item.stacks = stacks
+	item.stacks = 0
 	print_debug("item.stacks: %d, stacks: %d, max_stacks: %d" % [item.stacks, stacks, item.max_stacks])
 	# var empty_slot_index = inventory_items.find(null)
 	var existing_items: Array[int] = []
@@ -65,7 +65,8 @@ func add_stackable_item_to_inventory(item: InventoryItem, stacks: int):
 		remains_stacks = addStackToStackable(inventory_items[i],stacks)
 		inventory_ui.update_stack_at_slot_index(inventory_items[i].stacks, i)
 		if remains_stacks == 0:
-			break
+			return
+	
 	print_debug("Осталось",remains_stacks / item.max_stacks + 1)
 	for i in range(remains_stacks / item.max_stacks + 1):
 		var new_item := item.duplicate(true)
