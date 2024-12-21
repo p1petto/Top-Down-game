@@ -75,25 +75,25 @@ func play_attack_animation():
 	var direction = animation.split("_")[1]
 	attack_direction = direction
 	play(DIRECTION_TO_ATTACK_ANIMATION[direction])
-	if (str(direction) == "horizontal"):
-		if flip_h == false:
-			attak_collision.position = COLLISION_ATTAK_POSITION["right"]
-		else:
-			attak_collision.position = COLLISION_ATTAK_POSITION["left"]
-	else:	
-		attak_collision.position = COLLISION_ATTAK_POSITION[direction]
+	#if (str(direction) == "horizontal"):
+		#if flip_h == false:
+			#attak_collision.position = COLLISION_ATTAK_POSITION["right"]
+		#else:
+			#attak_collision.position = COLLISION_ATTAK_POSITION["left"]
+	#else:	
+		#attak_collision.position = COLLISION_ATTAK_POSITION[direction]
 		
 func play_mining_animation():
 	var direction = animation.split("_")[1]
 	attack_direction = direction
 	play(DIRECTION_TO_MINING_ANIMATION[direction])
-	if (str(direction) == "horizontal"):
-		if flip_h == false:
-			attak_collision.position = COLLISION_ATTAK_POSITION["right"]
-		else:
-			attak_collision.position = COLLISION_ATTAK_POSITION["left"]
-	else:	
-		attak_collision.position = COLLISION_ATTAK_POSITION[direction]
+	#if (str(direction) == "horizontal"):
+		#if flip_h == false:
+			#attak_collision.position = COLLISION_ATTAK_POSITION["right"]
+		#else:
+			#attak_collision.position = COLLISION_ATTAK_POSITION["left"]
+	#else:	
+		#attak_collision.position = COLLISION_ATTAK_POSITION[direction]
 	
 func play_damaged_animation():
 	if TO_DAMAGE.keys().has(animation):
