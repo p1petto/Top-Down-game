@@ -33,8 +33,11 @@ var current_state : State = State.IDLE :
 		current_state = new_state
 var acc = null
 
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
 var player: Player
 
+@export var target: Node2D = null
 	
 func _ready() -> void:
 	speed = enemy_data.speed
@@ -42,6 +45,8 @@ func _ready() -> void:
 	max_health = enemy_data.max_health
 	chase_distance = enemy_data.chase_distance
 	
+	navigation_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
+
 	health_system_enemy.init(max_health)
 	#health_system_enemy.died.connect(on_dead)
 	if patrol_path.size() > 0:
@@ -52,8 +57,13 @@ func _ready() -> void:
 	collision_shape_2d.shape = enemy_data.collision_shape
 	area_collision_shape_2d.shape = enemy_data.attack_collision
 	agro_area.shape = enemy_data.agro_collision
+	call_deferred("seeker_setup")
 	
-	
+func seeker_setup():
+	await get_tree().physics_frame
+	if target:
+		navigation_agent.target_position = target.global_position
+		
 	
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -85,10 +95,22 @@ func chase_player(delta):
 				current_state = State.PATROL
 			else:
 				current_state = State.IDLE
+		if is_instance_valid(target):
+			navigation_agent.target_position = target.global_position
+		if navigation_agent.is_navigation_finished():
+			return
 		var direction = (player.global_position - global_position).normalized()
 		animated_sprite_2d.play_movement_animation(direction)
-		velocity = direction * speed * delta
-		move_and_slide()
+		var current_self_position = global_position
+		var next_path_pos:= navigation_agent.get_next_path_position()
+		velocity = current_self_position.direction_to(next_path_pos) * speed * delta
+
+		if navigation_agent.avoidance_enabled:
+			navigation_agent.set_velocity(velocity)
+		else:
+			_on_navigation_agent_2d_velocity_computed(velocity)
+
+		
 	else: current_state = State.PATROL
 
 func move_along_path(delta: float):
@@ -182,3 +204,8 @@ func _on_attack_timer_timeout() -> void:
 func _on_attack_collision_body_exited(body: Node2D) -> void:
 	if body.name == 'Player':
 		player_on_enemy = false	
+
+func _on_navigation_agent_2d_velocity_computed(new_velocity):
+	velocity = new_velocity
+
+	move_and_slide()

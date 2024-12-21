@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvk7od4v07rh"]
+[gd_scene load_steps=4 format=3 uid="uid://b17scodylmbbq"]
 
 [ext_resource type="Script" path="res://Scripts/UsefulResources/resource_item.gd" id="1_uj5n0"]
 [ext_resource type="Texture2D" uid="uid://bhnnwn1k42ph5" path="res://Assets/sprites/objects/rocks_shadow-1.png" id="2_b0iy8"]
@@ -17,3 +17,9 @@ texture = ExtResource("2_b0iy8")
 position = Vector2(-1, 4)
 rotation = 1.5708
 shape = ExtResource("3_ny10t")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." groups=["nav_obstacle"]]
+scale = Vector2(1.49924, 1.28397)
+radius = 12.0
+affect_navigation_mesh = true
+carve_navigation_mesh = true
