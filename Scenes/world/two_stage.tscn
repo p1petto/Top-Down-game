@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=4 uid="uid://1buetmxmnsch"]
+[gd_scene load_steps=10 format=4 uid="uid://1buetmxmnsch"]
 
 [ext_resource type="TileSet" uid="uid://mxvk3pfnly5d" path="res://Scenes/tilesets/dungeon.tres" id="1_db265"]
 [ext_resource type="TileSet" uid="uid://d35fak84bvcpw" path="res://Scenes/tilesets/walll.tres" id="2_wx85n"]
 [ext_resource type="TileSet" uid="uid://ipu2xpe1fqvk" path="res://Scenes/tilesets/ladder.tres" id="3_7bqvr"]
-[ext_resource type="PackedScene" uid="uid://dwar5nmiycv5x" path="res://Scenes/hatch.tscn" id="4_3two5"]
+[ext_resource type="PackedScene" path="res://Scenes/hatch.tscn" id="4_3two5"]
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="5_3wl4s"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="6_smpk8"]
 [ext_resource type="Resource" uid="uid://bw3nfen5uayfu" path="res://Resources/Enemies/Spider/Spider.tres" id="7_xinyn"]
 [ext_resource type="TileSet" uid="uid://b03clw2il30fq" path="res://Scenes/tilesets/wallu.tres" id="8_y8fok"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5323i"]
+vertices = PackedVector2Array(804.648, -150.211, 842.227, 392.344, -135.539, 334.539, -165.383, -172.742)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-176, -183, 814, -160, 853, 403, -145, 344)])
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_obstacle"
 
 [node name="TwoStage" type="Node2D"]
 texture_filter = 1
@@ -44,50 +51,63 @@ y_sort_enabled = true
 [node name="Player" parent="TileMapObjects" instance=ExtResource("5_3wl4s")]
 position = Vector2(249, 27)
 
-[node name="Enemy" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy2" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy2" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D2")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy3" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy3" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D3")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy4" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy4" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D4")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy5" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy5" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D5")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy6" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy6" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D6")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy7" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy7" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D7")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy8" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy8" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D8")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
 
-[node name="Enemy9" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_smpk8")]
+[node name="Enemy9" parent="TileMapObjects" node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("6_smpk8")]
 position = Vector2(-193, 304)
 patrol_path = [NodePath("../../Marker2D9")]
 enemy_data = ExtResource("7_xinyn")
+target = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMapObjects" groups=["nav_obstacle"]]
+position = Vector2(-129, 101)
+navigation_polygon = SubResource("NavigationPolygon_5323i")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(91, 427)

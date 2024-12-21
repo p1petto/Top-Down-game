@@ -1,14 +1,19 @@
-[gd_scene load_steps=10 format=4 uid="uid://1p6pp5jv8vcy"]
+[gd_scene load_steps=11 format=4 uid="uid://ddxo7j8h3uaw0"]
 
 [ext_resource type="TileSet" uid="uid://mxvk3pfnly5d" path="res://Scenes/tilesets/dungeon.tres" id="1_1qsus"]
 [ext_resource type="TileSet" uid="uid://d35fak84bvcpw" path="res://Scenes/tilesets/walll.tres" id="2_asmki"]
 [ext_resource type="TileSet" uid="uid://ipu2xpe1fqvk" path="res://Scenes/tilesets/ladder.tres" id="3_147cx"]
-[ext_resource type="PackedScene" uid="uid://dwar5nmiycv5x" path="res://Scenes/hatch.tscn" id="4_ks2qk"]
+[ext_resource type="PackedScene" path="res://Scenes/hatch.tscn" id="4_ks2qk"]
 [ext_resource type="TileSet" uid="uid://dt77b02kv822s" path="res://Scenes/tilesets/objects.tres" id="5_nqp6o"]
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="6_b4gje"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="7_yana0"]
 [ext_resource type="Resource" uid="uid://cyufftro6dyem" path="res://Resources/Enemies/golem/Golem.tres" id="9_c0wdp"]
 [ext_resource type="TileSet" uid="uid://b03clw2il30fq" path="res://Scenes/tilesets/wallu.tres" id="11_g1lmt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g8uqo"]
+vertices = PackedVector2Array(433.07, -40.0313, 436.922, 452, -54.8984, 452, -50.0938, -41.9609)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-60, -52, 443, -50, 447, 462, -65, 462)])
 
 [node name="ThreeStage" type="Node2D"]
 texture_filter = 1
@@ -44,7 +49,11 @@ tile_set = ExtResource("11_g1lmt")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(202, 434)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_yana0")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path", "target") instance=ExtResource("7_yana0")]
 position = Vector2(199, 428)
 patrol_path = [NodePath("../Marker2D")]
 enemy_data = ExtResource("9_c0wdp")
+target = NodePath("../TileMapObject/Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_g8uqo")
