@@ -10,7 +10,7 @@
 script = ExtResource("4_ewvqf")
 speed = 500.0
 patrol_wait_time = 1.0
-max_health = 666
+max_health = 30
 chase_distance = 300.0
 sprite_frames = ExtResource("5_mbwhw")
 collision_shape = ExtResource("3_cc64l")

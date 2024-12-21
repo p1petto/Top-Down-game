@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://mxvk3pfnly5d" path="res://Scenes/tilesets/dungeon.tres" id="1_db265"]
 [ext_resource type="TileSet" uid="uid://d35fak84bvcpw" path="res://Scenes/tilesets/walll.tres" id="2_wx85n"]
 [ext_resource type="TileSet" uid="uid://ipu2xpe1fqvk" path="res://Scenes/tilesets/ladder.tres" id="3_7bqvr"]
-[ext_resource type="PackedScene" path="res://Scenes/hatch.tscn" id="4_3two5"]
+[ext_resource type="PackedScene" uid="uid://dwar5nmiycv5x" path="res://Scenes/hatch.tscn" id="4_3two5"]
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="5_3wl4s"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="6_smpk8"]
 [ext_resource type="Resource" uid="uid://bw3nfen5uayfu" path="res://Resources/Enemies/Spider/Spider.tres" id="7_xinyn"]

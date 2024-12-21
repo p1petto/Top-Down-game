@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://d35fak84bvcpw" path="res://Scenes/tilesets/walll.tres" id="2_eqpep"]
 [ext_resource type="TileSet" uid="uid://dt77b02kv822s" path="res://Scenes/tilesets/objects.tres" id="3_a1y0l"]
 [ext_resource type="PackedScene" uid="uid://cmp0f4064a264" path="res://Scenes/player.tscn" id="4_sverw"]
-[ext_resource type="PackedScene" path="res://Scenes/hatch.tscn" id="4_yns08"]
+[ext_resource type="PackedScene" uid="uid://dwar5nmiycv5x" path="res://Scenes/hatch.tscn" id="4_yns08"]
 [ext_resource type="PackedScene" uid="uid://c0yqjq7gubvhw" path="res://Scenes/enemy.tscn" id="7_26cci"]
 [ext_resource type="Resource" uid="uid://bbklf8joq0p74" path="res://Resources/Enemies/Minotaur/minotaur.tres" id="8_bk8ev"]
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_item.gd" id="9_ewawa"]
